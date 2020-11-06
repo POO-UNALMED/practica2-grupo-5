@@ -1,5 +1,5 @@
 # Hotel El POOderoso
-Practica1
+Practica 2
 
 #### Integrantes:
 ##### - Andres Castrillon Velasquez - C.C 1.040.744.569
