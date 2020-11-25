@@ -115,7 +115,9 @@ public class Prueba extends Application  {
 		p5.setAlignment(Pos.CENTER);
 		p5.setHgap(5);
 		p5.setVgap(5);
-		p5.add(new Label("Desarrolladores"), 0, 0);
+		Label c=new Label("            Desarrolladores");
+		c.setFont(new Font("Arial", 15));
+		p5.add(c, 0, 0,4,1);
 		p5.add(edwar,0,1);
 		p5.add(diego,1,1);
 		p5.add(sebas,2,1);
