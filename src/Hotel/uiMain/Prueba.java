@@ -123,6 +123,7 @@ public class Prueba extends Application  {
 		p5.add(sebas,2,1);
 		p5.add(andres,3,1);
 		p5.add(caja, 0, 2, 4, 1);
+		
 
 //		p5.addAll();
 		p6.setAlignment(Pos.CENTER);
