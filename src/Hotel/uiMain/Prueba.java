@@ -10,12 +10,17 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -185,7 +190,7 @@ public class Prueba extends Application  {
 		p2.setTop(p5);
 		p2.setBottom(p6);
 		
-		Label b=new Label("Bienvenido al Hotel POOderoso\n Siempre a sus servicios. :D");
+		Label b=new Label("\nBienvenido al Hotel POOderoso\n   Siempre a sus servicios. :D");
 		b.setFont(new Font("Arial", 15));
 		p3.setCenter(b);
 		
@@ -210,6 +215,16 @@ public class Prueba extends Application  {
 		p4.add(i17, 0, 0, 3, 3);;
 		p4.add(ent,0,5);
 		
+		MenuBar barraMenu = new MenuBar();
+		Menu menu1 = new Menu("Incio");
+		barraMenu.getMenus().add(menu1);
+		MenuItem menuItem1 = new MenuItem("Salir");
+		MenuItem menuItem2 = new MenuItem("Descripcion");
+        SeparatorMenuItem separator = new SeparatorMenuItem();
+        menu1.getItems().add(menuItem1);
+        menu1.getItems().addAll(separator, menuItem2);
+        root.setTop(new VBox(barraMenu));
+
 		
 		/*
 		 * Button play = new Button("Play"); play.setMinWidth(100.0);
