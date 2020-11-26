@@ -43,11 +43,11 @@ public class Prueba extends Application {
 	@Override
 	public void start(Stage hotel) throws Exception {
 
-		Image im1 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im1.jpg"));
+		Image im1 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im1.jpg")); //Imagenes Edward
 		Image im2 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im2.jpeg"));
 		Image im3 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im3.jpeg"));
 		Image im4 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im4.jpeg"));
-		Image im5 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im5.jpg"));
+		Image im5 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im5.jpg")); // Imagenes Diego
 		Image im6 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im6.jpg"));
 		Image im7 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im7.jpg"));
 		Image im8 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im8.jpg"));
@@ -55,6 +55,10 @@ public class Prueba extends Application {
 		Image im10 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im10.jpg"));
 		Image im11 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im11.jpg"));
 		Image im12 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im12.jpg"));
+		Image im13 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im13.jpg")); //Imagenes Andres
+		Image im14 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im14.jpg"));
+		Image im15 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im15.jpg"));
+		Image im16 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im16.jpg"));
 		i1 = new ImageView(im1);
 		i1.setFitWidth(130);
 		i1.setFitHeight(130);
