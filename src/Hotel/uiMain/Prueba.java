@@ -290,8 +290,7 @@ public class Prueba extends Application {
 			Object control = e.getSource();
 			if (control instanceof Button) {
 				if (control.equals(ent)) {
-					new iuMainInterfaz();
-					iuMainInterfaz.crearEscenaMenu();
+					new iuMainInterfaz().crearEscenaMenu();
 					
 				}
 			}
