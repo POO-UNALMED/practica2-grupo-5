@@ -37,6 +37,19 @@ public class Prueba extends Application  {
 	public ImageView i6;
 	public ImageView i7;
 	public ImageView i8;
+	public ImageView i9;
+	public ImageView i10;
+	public ImageView i11;
+	public ImageView i12;
+	public ImageView i13;
+	public ImageView i14;
+	public ImageView i15;
+	public ImageView i16;
+	public ImageView i17;
+	public ImageView i18;
+	public ImageView i19;
+	public ImageView i20;
+	public ImageView i21;
 
 	 
 
@@ -51,6 +64,21 @@ public class Prueba extends Application  {
 		Image im6= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im6.jpg"));
 		Image im7= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im7.jpg"));
 		Image im8= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im8.jpg"));
+		Image im9= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im9.jpg"));
+		Image im10= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im10.jpg"));
+		Image im11= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im11.jpg"));
+		Image im12= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im12.jpg"));
+		Image im13= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im13.jpg"));
+		Image im14= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im14.png"));
+		Image im15= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im15.png"));
+		Image im16= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im16.png"));
+		Image im17= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im17.jpg"));
+		Image im18= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im18.jpg"));
+		Image im19= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im19.jpg"));
+		Image im20= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im20.jpg"));
+		Image im21= new Image(new FileInputStream(System.getProperty("user.dir")+"\\src\\imagenes\\im21.jpg"));
+		
+		
 		i1=new ImageView(im1);
 		i1.setFitWidth(130);
 		i1.setFitHeight(130);
@@ -83,6 +111,55 @@ public class Prueba extends Application  {
 		i8.setFitWidth(130);
 		i8.setFitHeight(130);
 		
+		i9=new ImageView(im9);
+		i9.setFitWidth(130);
+		i9.setFitHeight(130);
+		
+		i10=new ImageView(im10);
+		i10.setFitWidth(130);
+		i10.setFitHeight(130);
+		
+		i11=new ImageView(im11);
+		i11.setFitWidth(130);
+		i11.setFitHeight(130);
+		
+		i12=new ImageView(im12);
+		i12.setFitWidth(130);
+		i12.setFitHeight(130);
+		
+		i13=new ImageView(im13);
+		i13.setFitWidth(130);
+		i13.setFitHeight(130);
+		
+		i14=new ImageView(im14);
+		i14.setFitWidth(130);
+		i14.setFitHeight(130);
+		
+		i15=new ImageView(im15);
+		i15.setFitWidth(130);
+		i15.setFitHeight(130);
+		
+		i16=new ImageView(im16);
+		i16.setFitWidth(130);
+		i16.setFitHeight(130);
+		
+		i17=new ImageView(im17);
+		i17.setFitWidth(300);
+		i17.setFitHeight(300);
+		i18=new ImageView(im18);
+		i18.setFitWidth(300);
+		i18.setFitHeight(300);
+		i19=new ImageView(im19);
+		i19.setFitWidth(300);
+		i19.setFitHeight(300);
+		i20=new ImageView(im20);
+		i20.setFitWidth(300);
+		i20.setFitHeight(300);
+		i21=new ImageView(im21);
+		i21.setFitWidth(300);
+		i21.setFitHeight(300);
+		
+		
 		Botones1 pepe=new Botones1();
 		
 		edwar.setOnAction(pepe);
@@ -97,7 +174,7 @@ public class Prueba extends Application  {
 		BorderPane p1= new BorderPane();
 		BorderPane p2= new BorderPane();
 		BorderPane p3= new BorderPane();
-		BorderPane p4= new BorderPane();
+		GridPane p4= new GridPane();
 		GridPane p5= new GridPane();
 		
 		
@@ -124,11 +201,16 @@ public class Prueba extends Application  {
 		p5.add(andres,3,1);
 		p5.add(caja, 0, 2, 4, 1);
 		
-
-//		p5.addAll();
 		p6.setAlignment(Pos.CENTER);
 		
-		p4.setBottom(ent);
+		p4.setAlignment(Pos.CENTER);
+		p4.setHgap(5);
+		p4.setVgap(5);
+		//prueba
+		p4.add(i17, 0, 0, 3, 3);;
+		p4.add(ent,0,5);
+		
+		
 		/*
 		 * Button play = new Button("Play"); play.setMinWidth(100.0);
 		 * play.setOnAction(new EventHandler<ActionEvent>() { public void
@@ -169,10 +251,21 @@ public class Prueba extends Application  {
 					caja.setText(" Nombre:  Sebastian Rendon Arteaga\n Ig: sebasrendon12\n"
 							+ "Carrera: Ing. Sistemas e informatica\n" + "Universidad Nacional de Colombia");
 					caja.setFont(new Font("Arial", 15));
+					p6.getChildren().clear();
+					p6.add(i13,0,0);
+					p6.add(i14,0,1);
+					p6.add(i15,1,0);
+					p6.add(i16,1,1);
+					
 				} else if (control.equals(andres)) {
 					caja.setText(" Nombre:  Andres Castrillon Velasquez\n No insta\n"
 							+ "Carrera: Ing. Sistemas e informatica\n" + "Universidad Nacional de Colombia");
 					caja.setFont(new Font("Arial", 15));
+					p6.getChildren().clear();
+					p6.add(i9,0,0);
+					p6.add(i10,0,1);
+					p6.add(i11,1,0);
+					p6.add(i12,1,1);
 				} else if (control.equals(diego)) {
 					caja.setText(" Nombre:  Diego Andres Chavarria\n Ig: diego_chava_25\n"
 							+ "Carrera: Ing. Sistemas e informatica\n" + "Universidad Nacional de Colombia");
