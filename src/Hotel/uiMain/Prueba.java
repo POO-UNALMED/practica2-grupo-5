@@ -35,6 +35,10 @@ public class Prueba extends Application {
 	public ImageView i6;
 	public ImageView i7;
 	public ImageView i8;
+	public ImageView i9;
+	public ImageView i10;
+	public ImageView i11;
+	public ImageView i12;
 
 	@Override
 	public void start(Stage hotel) throws Exception {
@@ -47,6 +51,10 @@ public class Prueba extends Application {
 		Image im6 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im6.jpg"));
 		Image im7 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im7.jpg"));
 		Image im8 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im8.jpg"));
+		Image im9 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im9.jpg"));
+		Image im10 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im10.jpg"));
+		Image im11 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im11.jpg"));
+		Image im12 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im12.jpg"));
 		i1 = new ImageView(im1);
 		i1.setFitWidth(130);
 		i1.setFitHeight(130);
@@ -78,6 +86,22 @@ public class Prueba extends Application {
 		i8 = new ImageView(im8);
 		i8.setFitWidth(130);
 		i8.setFitHeight(130);
+
+		i9 = new ImageView(im9);
+		i9.setFitWidth(130);
+		i9.setFitHeight(130);
+
+		i10 = new ImageView(im10);
+		i10.setFitWidth(130);
+		i10.setFitHeight(130);
+
+		i11 = new ImageView(im11);
+		i11.setFitWidth(130);
+		i11.setFitHeight(130);
+
+		i12 = new ImageView(im12);
+		i12.setFitWidth(130);
+		i12.setFitHeight(130);
 
 		Botones1 pepe = new Botones1();
 
@@ -161,6 +185,11 @@ public class Prueba extends Application {
 					caja.setText(
 							" Nombre:  Sebastian Rendon Arteaga\n Ig: sebasrendon12\n Carrera: Ing. Sistemas e informatica\n Universidad Nacional de Colombia");
 					caja.setFont(new Font("Arial", 15));
+					p6.getChildren().clear();
+					p6.add(i9, 0, 0);
+					p6.add(i10, 0, 1);
+					p6.add(i11, 1, 0);
+					p6.add(i12, 1, 1);
 				} else if (control.equals(andres)) {
 					caja.setText(
 							" Nombre:  Andres Castrillon Velasquez\n Ig: N.A\n Carrera: Ing. Sistemas e informatica\n Universidad Nacional de Colombia");
