@@ -24,9 +24,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Prueba extends Application {
-	BorderPane root = new BorderPane();
-	BorderPane root1 = new BorderPane();
-	Scene myScene = new Scene(root, 600, 450);
 	Button ent = new Button("Entrar");
 	Label caja = new Label();
 	GridPane p6 = new GridPane();
@@ -162,8 +159,10 @@ public class Prueba extends Application {
 		i21.setFitWidth(300);
 		i21.setFitHeight(300);
 
-		root.setPadding(new Insets(10, 10, 10, 10));
 
+
+		BorderPane root = new BorderPane();
+		root.setPadding(new Insets(10, 10, 10, 10));
 		BorderPane p1 = new BorderPane();
 		BorderPane p2 = new BorderPane();
 		BorderPane p3 = new BorderPane();
@@ -221,7 +220,7 @@ public class Prueba extends Application {
 		root.setTop(new VBox(barraMenu));
 
 		hotel.setTitle("Hotel POOderoso");
-
+		Scene myScene = new Scene(root, 600, 450);
 		hotel.setScene(myScene);
 		hotel.show();
 
@@ -291,7 +290,9 @@ public class Prueba extends Application {
 			Object control = e.getSource();
 			if (control instanceof Button) {
 				if (control.equals(ent)) {
-					caja.setText(" N");
+					new iuMainInterfaz();
+					iuMainInterfaz.crearEscenaMenu();
+					
 				}
 			}
 		}
