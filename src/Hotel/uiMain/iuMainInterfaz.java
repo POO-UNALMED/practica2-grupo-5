@@ -359,6 +359,8 @@ public class iuMainInterfaz {
 					panel2 = Empleado.mostrarEmpleadosExistente(panel2);
 				} else if (control.equals(menuItem30)) {
 					panel2 = Empleado.informacionHotel(panel2);
+				} else if (control.equals(salir)) {
+					panelito.close();
 				}
 
 			}
