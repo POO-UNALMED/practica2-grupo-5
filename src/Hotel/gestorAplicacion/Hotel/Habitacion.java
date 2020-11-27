@@ -23,6 +23,9 @@ import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.format.DateTimeFormat;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.util.Pair;
 import uiMain.MenuController;
 import uiMain.global;
@@ -90,7 +93,7 @@ public class Habitacion implements Serializable {
 			eliminarHabitacion();
 			break;
 		case 5:
-			mostrarHabitacionesExistente();
+//			mostrarHabitacionesExistente();
 			break;
 		case 6:
 			habitacionesDisponible();
@@ -472,35 +475,29 @@ public class Habitacion implements Serializable {
 	}
 
 	@SuppressWarnings("resource")
-	public static void mostrarHabitacionesExistente() {
+	public static GridPane mostrarHabitacionesExistente(GridPane panel) {
 		DecimalFormat moneda = new DecimalFormat("###,###");
 		global globalService = new global();
 		Scanner sc = new Scanner(System.in);
 		globalService.clearScr();
-		System.out.println("    HABITACIONES EXISTENTES ACTUALMENTE");
+		String t="";
+		t+="HABITACIONES EXISTENTES ACTUALMENTE\n";
 		if (Habitacion.lstHabitacion.size() > 0) {
 			int n = 1;
 			for (Habitacion h : Habitacion.lstHabitacion) {
-				System.out.println(n + "- Numero de habitacion: " + h.getNumeroHabitacion() + " Descripcion: "
+				t+=n + "- Numero de habitacion: " + h.getNumeroHabitacion() + " Descripcion: "
 						+ h.getDescripcion() + "\n   Tipo: " + h.getTipo() + "  Precio por dia : $ "
-						+ moneda.format(h.getPrecioDia()));
+						+ moneda.format(h.getPrecioDia())+"\n";
 				n++;
 			}
-			System.out.println();
-			System.out.println("Total de habitaciones: " + Habitacion.lstHabitacion.size());
-			System.out.println("Presione '1' para regresar");
-			sc.next();
-			Habitacion.menuHabitacion();
-
+			t+="Total de habitaciones: " + Habitacion.lstHabitacion.size()+"\n";
 		} else {
-			System.out.println("No hay habitaciones existentes por el momento.");
-			try {
-				Thread.sleep(3000);
-				Habitacion.menuHabitacion();
-			} catch (InterruptedException e) {
-				Habitacion.menuHabitacion();
-			}
+			t+="No hay habitaciones existentes por el momento.";
 		}
+		Label tete=new Label(t);
+		tete.setFont(new Font("Arial", 20));
+		panel.add(tete, 0, 0);
+		return panel;
 	}
 
 	@SuppressWarnings("resource")

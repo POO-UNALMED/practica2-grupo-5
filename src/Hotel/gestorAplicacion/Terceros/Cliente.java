@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import gestorAplicacion.Hotel.Reserva;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import uiMain.MenuController;
 import uiMain.global;
 
@@ -67,7 +70,7 @@ public class Cliente extends Persona implements Serializable {
 			eliminarCliente();
 			break;
 		case 5:
-			mostrarClientesExistente();
+//			mostrarClientesExistente();
 			break;
 		case 6:
 			new MenuController();
@@ -461,37 +464,36 @@ public class Cliente extends Persona implements Serializable {
 
 	// Recorre la lista de clientes que se encuentra en la base de datos.
 	@SuppressWarnings("resource")
-	public static void mostrarClientesExistente() {
+	public static GridPane mostrarClientesExistente(GridPane panel) {
 		global globalService = new global();
 		Scanner sc = new Scanner(System.in);
 		globalService.clearScr();
-		System.out.println("    CLIENTES EXISTENTES ACTUALMENTE\n");
+		
+		String textotal="";
+		textotal+="    CLIENTES EXISTENTES ACTUALMENTE\n";
 		if (Cliente.lstCliente.size() > 0) {
 			int n = 1;
 			for (Cliente c : Cliente.lstCliente) {
 				if (c.getEmpleado() != null) {
-					System.out.println(n + "- Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula()
-							+ " Empleado a Cargo: " + c.getEmpleado().getNombre());
+					textotal+=n + "- Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula()
+							+ " Empleado a Cargo: " + c.getEmpleado().getNombre()+"\n";
 					n++;
 
 				} else {
-					System.out.println(n + "- Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula() + "\n");
+					textotal+=n + "- Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula() + "\n";
 					n++;
 				}
 			}
-			System.out.println("Presione '1' para regresar");
-			sc.next();
-			Cliente.menuCliente();
+			textotal+="Total de clientes: " + Cliente.lstCliente.size();
 
 		} else {
-			System.out.println("No hay clientes existentes por el momento.");
-			try {
-				Thread.sleep(3000);
-				Cliente.menuCliente();
-			} catch (InterruptedException e) {
-				Cliente.menuCliente();
-			}
+			textotal+="No hay clientes existentes por el momento.";
+
 		}
+		Label tete=new Label(textotal);
+		tete.setFont(new Font("Arial", 20));
+		panel.add(tete, 0, 0);
+		return panel;
 	}
 
 	// Verifica que el cliente exista, y que sus atributos sean validos.
@@ -621,16 +623,18 @@ public class Cliente extends Persona implements Serializable {
 		return Cliente.lstCliente.size();
 	}
 
-	public void mostrarTotal() {
+	public String mostrarTotal() {
+		String texto="";
 		for (Cliente c : Cliente.lstCliente) {
 			if (c.getEmpleado() != null) {
-				System.out.println("---> Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula()
-						+ " Empleado a Cargo: " + c.getEmpleado().getNombre());
+				texto+="---> Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula()
+						+ " Empleado a Cargo: " + c.getEmpleado().getNombre();
 
 			} else {
-				System.out.println("---> Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula());
+				texto+="---> Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula();
 			}
 		}
+		return texto;
 	}
 
 	public Reserva getReserva() {

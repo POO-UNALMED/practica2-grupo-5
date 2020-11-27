@@ -17,6 +17,10 @@ import java.util.Scanner;
 
 import gestorAplicacion.Hotel.Habitacion;
 import gestorAplicacion.Hotel.Reserva;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import uiMain.MenuController;
 import uiMain.global;
 
@@ -66,7 +70,7 @@ public class Empleado extends Persona implements Serializable {
 			darInfo();
 			break;
 		case 6:
-			mostrarEmpleadosExistente();
+//			mostrarEmpleadosExistente();
 			break;
 		case 7:
 			new MenuController();
@@ -424,33 +428,28 @@ public class Empleado extends Persona implements Serializable {
 
 	// Recorre la lista de empleados del sistema e imprime sus atributos.
 	@SuppressWarnings("resource")
-	public static void mostrarEmpleadosExistente() {
+	public static GridPane mostrarEmpleadosExistente(GridPane panel) {
 		DecimalFormat moneda = new DecimalFormat("###,###");
 		global globalService = new global();
 		Scanner sc = new Scanner(System.in);
 		globalService.clearScr();
-		System.out.println("    EMPLEADOS EXISTENTES ACTUALMENTE \n");
+		String textotal="";
+		textotal+="    EMPLEADOS EXISTENTES ACTUALMENTE \n";
 		if (Empleado.lstEmpleado.size() > 0) {
 			int n = 1;
 			for (Empleado e : Empleado.lstEmpleado) {
-				System.out.println(n + "- Nombre: " + e.getNombre() + "\n   Cedula: " + e.getCedula() + " Salario: $ "
-						+ moneda.format(e.getSalario()) + "\n");
+				textotal+=n + "- Nombre: " + e.getNombre() + "\n   Cedula: " + e.getCedula() + " Salario: $ "
+						+ moneda.format(e.getSalario()) + "\n";
 				n++;
 			}
-			System.out.println("Total de empleados: " + Empleado.lstEmpleado.size());
-			System.out.println("Presione '1' para regresar");
-			sc.next();
-			Empleado.menuEmpleado();
-
+			textotal+="Total de empleados: " + Empleado.lstEmpleado.size();
 		} else {
-			System.out.println("No hay empleados existentes por el momento.");
-			try {
-				Thread.sleep(3000);
-				Empleado.menuEmpleado();
-			} catch (InterruptedException e) {
-				Empleado.menuEmpleado();
-			}
+			textotal+="No hay empleados existentes por el momento.";
 		}
+		Label tete=new Label(textotal);
+		tete.setFont(new Font("Arial", 20));
+		panel.add(tete, 0, 0);
+		return panel;
 	}
 
 	@SuppressWarnings("resource")
@@ -580,12 +579,13 @@ public class Empleado extends Persona implements Serializable {
 		return Empleado.lstEmpleado.size();
 	}
 
-	public void mostrarTotal() {
+	public String mostrarTotal() {
 		DecimalFormat moneda = new DecimalFormat("###,###");
+		String texto="";
 		for (Empleado e : Empleado.lstEmpleado) {
-			System.out.println("---> Nombre: " + e.getNombre() + "\n   Cedula: " + e.getCedula() + " Salario: $ "
-					+ moneda.format(e.getSalario()) + "\n");
+			texto+="---> Nombre: " + e.getNombre() + "\n   Cedula: " + e.getCedula() + " Salario: $ "+ moneda.format(e.getSalario()) + "\n";
 		}
+		return texto;
 	}
 
 	public static List<Empleado> getLstEmpleado() {
@@ -607,7 +607,11 @@ public class Empleado extends Persona implements Serializable {
 	// Metodo que se encarga de imprimir la informacion del hotel, incluyedo # de
 	// clientes, empleados habitaciones y reservas
 	@SuppressWarnings("resource")
-	public static void informacionHotel() {
+	public static GridPane informacionHotel(GridPane panel) {
+		
+		panel.getChildren().clear();
+		panel.setAlignment(Pos.TOP_LEFT);
+		
 		DecimalFormat moneda = new DecimalFormat("###,###");
 		global globalService = new global();
 		Scanner sc = new Scanner(System.in);
@@ -616,35 +620,44 @@ public class Empleado extends Persona implements Serializable {
 		// En este metodo se usa de ligadura dinamica en 2 ocaciones para hacer uso de
 		// los metodos de la clase Cliente
 		// y Empleado, que heredan de la clase abstract Persona.
-
-		Persona p = Empleado.getLstEmpleado().get(0);
-		System.out.println("El Hotel POOderoso cuenta altualmente con:\n");
-		System.out.println("Total de empleados: " + p.cantidadTotal());
-		System.out.println("Listado:\n");
-		p.mostrarTotal();
+		Persona p;
+		String textotal="";
+		textotal+="El Hotel POOderoso cuenta altualmente con:\n";
+		if(Empleado.getLstEmpleado().size()>0) {
+			p = Empleado.getLstEmpleado().get(0);
+			textotal+="Total de empleados: " + p.cantidadTotal()+"\n";
+			textotal+="Listado:\n";
+			textotal+=p.mostrarTotal();
+		}else {
+			textotal+="Total de empleados: 0\n";
+		}
+		
+		
 		if (Cliente.getLstCliente().size() > 0) {
 			p = Cliente.getLstCliente().get(0);
-			System.out.println("Total de clientes: " + p.cantidadTotal());
-			System.out.println("Listado:\n");
-			p.mostrarTotal();
+			textotal+="Total de clientes: " + p.cantidadTotal()+"\n";
+			textotal+="Listado:\n";
+			textotal+=p.mostrarTotal();
 		} else {
-			System.out.println("Total de clientes: 0");
+			textotal+="Total de clientes: 0\n";
 		}
 		if (Habitacion.getLstHabitacion().size() > 0) {
-			System.out.println("\nTotal de habitaciones: " + Habitacion.getLstHabitacion().size());
-			System.out.println("Listado:\n");
+			textotal+="Total de habitaciones: " + Habitacion.getLstHabitacion().size()+"\n";
+			textotal+="Listado:\n";
+			String texto="";
 			for (Habitacion h : Habitacion.getLstHabitacion()) {
-				System.out.println("---> Numero de habitacion: " + h.getNumeroHabitacion() + " Descripcion: "
+				texto+="---> Numero de habitacion: " + h.getNumeroHabitacion() + " Descripcion: "
 						+ h.getDescripcion() + "\n   Tipo: " + h.getTipo() + "  Precio por dia : $ "
-						+ moneda.format(h.getPrecioDia()));
+						+ moneda.format(h.getPrecioDia())+"\n";
 			}
+			textotal+=texto;
 		} else {
-			System.out.println("\nTotal de habitaciones: 0");
+			textotal+="Total de habitaciones: 0\n";
 		}
 		if (Reserva.getLstReserva().size() > 0) {
-			System.out.println();
-			System.out.println("Total de reservas: " + Reserva.getLstReserva().size());
-			System.out.println("Listado:\n");
+			textotal+="Total de reservas: " + Reserva.getLstReserva().size()+"\n";
+			textotal+="Listado:\n";
+			String texto="";
 			for (Reserva r : Reserva.getLstReserva()) {
 				// Se le da formato a las fechas para que imprima dd/mm/yyyy
 				Calendar fechaIniAux = Calendar.getInstance();
@@ -656,17 +669,17 @@ public class Empleado extends Persona implements Serializable {
 				String string2 = fechaFinAux.get(Calendar.DATE) + "/" + (fechaFinAux.get(Calendar.MONTH) + 1) + "/"
 						+ fechaFinAux.get(Calendar.YEAR);
 
-				System.out.println("---> Numero de reserva: " + r.getId() + " Cliente: " + r.getCliente().getNombre()
-						+ "\n    Fecha de reserva: Desde: " + string1 + " Hasta: " + string2);
+				texto+="---> Numero de reserva: " + r.getId() + " Cliente: " + r.getCliente().getNombre()
+						+ "\n    Fecha de reserva: Desde: " + string1 + " Hasta: " + string2+"\n";
 			}
+			textotal+=texto;
 		} else {
-			System.out.println();
-			System.out.println("Total de reservas: 0");
+			textotal+="Total de Reserva: 0\n";
 		}
-		System.out.println();
-		System.out.println("Presione '1' para regresar");
-		sc.next();
-		new MenuController();
+		Label tete=new Label(textotal);
+		tete.setFont(new Font("Arial", 20));
+		panel.add(tete, 0, 0);
+		return panel;
 	}
 
 }

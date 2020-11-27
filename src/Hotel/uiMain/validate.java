@@ -23,6 +23,9 @@ public class validate {
 			case "Empleado":
 				new Empleado(Integer.parseInt(data.get(0)), data.get(1), Float.parseFloat(data.get(2)));
 				break;
+			case "Cliente":
+				new Cliente(Integer.parseInt(data.get(0)), data.get(1));
+				break;
 
 			default:
 				break;
