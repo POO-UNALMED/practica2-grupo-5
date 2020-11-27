@@ -31,7 +31,7 @@ public class iuMainInterfaz {
 	GridPane panel2 = new GridPane();
 
 	MenuItem menuItem1 = new MenuItem("Crear Reserva"); // listo
-	MenuItem menuItem2 = new MenuItem("Buscar Reserva");
+	MenuItem menuItem2 = new MenuItem("Buscar Reserva"); // Listo
 	MenuItem menuItem3 = new MenuItem("Eliminar Reserva"); // Listo
 	MenuItem menuItem4 = new MenuItem("Cancelar Reserva");
 	MenuItem menuItem5 = new MenuItem("Mostrar Listado de Reserva"); // listo

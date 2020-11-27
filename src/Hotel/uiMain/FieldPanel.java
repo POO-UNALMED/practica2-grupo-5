@@ -152,7 +152,7 @@ public class FieldPanel extends Pane {
 							isCorrect = false;
 							a.setAlertType(AlertType.ERROR);
 							a.setTitle("Error");
-							a.setHeaderText("Campo vac�o");
+							a.setHeaderText("Campo vacio");
 							a.setContentText("Uno o varios campos estan vacios");
 							a.show();
 							break;
@@ -373,6 +373,7 @@ public class FieldPanel extends Pane {
 			}
 			lstCombo = new ArrayList<>();
 			lstTextField = new ArrayList<>();
+			data = new ArrayList<>();
 			panes.getChildren().clear();
 		}
 	}
