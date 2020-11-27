@@ -3,7 +3,6 @@ package uiMain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -20,12 +19,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class iuMainInterfaz {
-	
-	
-	Stage panelito= new Stage();
+
+	Stage panelito = new Stage();
 	BorderPane root = new BorderPane();
 	GridPane panel2 = new GridPane();
-	
+
 	MenuItem menuItem1 = new MenuItem("Crear Reserva");
 	MenuItem menuItem2 = new MenuItem("Buscar Reserva");
 	MenuItem menuItem3 = new MenuItem("Eliminar Reserva");
@@ -56,8 +54,7 @@ public class iuMainInterfaz {
 	MenuItem menuItem28 = new MenuItem("Dar Informacion");
 	MenuItem menuItem29 = new MenuItem("Mostrar Listado de Empleados");
 	MenuItem menuItem30 = new MenuItem("Informacion Hotel");
-	
-	
+
 	MenuItem acerca;
 	MenuItem salir;
 	MenuItem hpoo;
@@ -66,9 +63,9 @@ public class iuMainInterfaz {
 	public void crearEscenaMenu() {
 
 		root.setPadding(new Insets(10, 10, 10, 10));
-		
+
 		MenuBar barraMenu = new MenuBar();
-		
+
 		Menu menu1 = new Menu("Archivo");
 		Menu menu2 = new Menu("Procesos y Consultas");
 		Menu menu3 = new Menu("Ayuda");
@@ -78,11 +75,11 @@ public class iuMainInterfaz {
 		Menu menu7 = new Menu("Pagos");
 		Menu menu8 = new Menu("Clientes");
 		Menu menu9 = new Menu("Empleados");
-		
+
 		acerca = new MenuItem("Acerca de");
-		salir= new MenuItem("Salir");
-		hpoo=new MenuItem("Hotel POOderoso");
-		
+		salir = new MenuItem("Salir");
+		hpoo = new MenuItem("Hotel POOderoso");
+
 		menu1.getItems().addAll(hpoo);
 		menu1.getItems().addAll(salir);
 		menu2.getItems().addAll(menu4);
@@ -185,7 +182,7 @@ public class iuMainInterfaz {
 					panel2.setAlignment(Pos.CENTER);
 					cajapanel2.setText(" Nombre:  Edwar Jose Londono Correa\n   -Correo: elondonoc@unal.edu.co\n"
 							+ "\nNombre: Sebastian Rendon Arteaga\n   -Correo: serendona@unal.edu.co\n"
-							+ "\nmbre: Diego Andres Chavarria Riano\n   -Correo: dchavarriar@unal.edu.co\n"
+							+ "\nNombre: Diego Andres Chavarria Riano\n   -Correo: dchavarriar@unal.edu.co\n"
 							+ "\nNombre: Andres Castrillon Velasquez\n   -Correo: acastrillonv@unal.edu.co");
 					cajapanel2.setFont(new Font("Arial", 30));
 					panel2.add(cajapanel2, 0, 0);
@@ -194,19 +191,18 @@ public class iuMainInterfaz {
 					panel2.setAlignment(Pos.CENTER);
 
 					panel2.add(new Label("inicio"), 0, 0);
-				}
-				else if (control.equals(menuItem1)) {
-					boolean lista[]= {false,false,false,false,false,false,false,false};
-					List<String> lista2= new ArrayList<>();
+				} else if (control.equals(menuItem1)) {
+					boolean lista[] = { false, false, false, false, false, false, false, false };
+					List<String> lista2 = new ArrayList<>();
 					lista2.add("Edwar");
 					lista2.add("123");
-					List<String> lista3= new ArrayList<>();
+					List<String> lista3 = new ArrayList<>();
 					lista3.add("Nombre");
 					lista3.add("Cedula");
-					panel2=new FieldPanel("Criterio",lista3,"Valor",lista2 ,lista).crearFormulario(panel2,"Crear Reserva","Se crea reserva");
+					panel2 = new FieldPanel("Criterio", lista3, "Valor", lista2, lista).crearFormulario(panel2,
+							"Crear Reserva", "Se crea reserva");
 
-				}
-				else if (control.equals(menuItem2)) {
+				} else if (control.equals(menuItem2)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
 
