@@ -432,20 +432,20 @@ public class Empleado extends Persona implements Serializable {
 		DecimalFormat moneda = new DecimalFormat("###,###");
 		panel.getChildren().clear();
 		panel.setAlignment(Pos.TOP_LEFT);
-		String textotal="";
-		textotal+="    EMPLEADOS EXISTENTES ACTUALMENTE \n";
+		String textotal = "";
+		textotal += "    EMPLEADOS EXISTENTES ACTUALMENTE \n";
 		if (Empleado.lstEmpleado.size() > 0) {
 			int n = 1;
 			for (Empleado e : Empleado.lstEmpleado) {
-				textotal+=n + "- Nombre: " + e.getNombre() + "\n   Cedula: " + e.getCedula() + " Salario: $ "
+				textotal += n + "- Nombre: " + e.getNombre() + "\n   Cedula: " + e.getCedula() + " Salario: $ "
 						+ moneda.format(e.getSalario()) + "\n";
 				n++;
 			}
-			textotal+="Total de empleados: " + Empleado.lstEmpleado.size();
+			textotal += "Total de empleados: " + Empleado.lstEmpleado.size();
 		} else {
-			textotal+="No hay empleados existentes por el momento.";
+			textotal += "No hay empleados existentes por el momento.";
 		}
-		Label tete=new Label(textotal);
+		Label tete = new Label(textotal);
 		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
@@ -580,9 +580,10 @@ public class Empleado extends Persona implements Serializable {
 
 	public String mostrarTotal() {
 		DecimalFormat moneda = new DecimalFormat("###,###");
-		String texto="";
+		String texto = "";
 		for (Empleado e : Empleado.lstEmpleado) {
-			texto+="---> Nombre: " + e.getNombre() + "\n   Cedula: " + e.getCedula() + " Salario: $ "+ moneda.format(e.getSalario()) + "\n";
+			texto += "---> Nombre: " + e.getNombre() + "\n   Cedula: " + e.getCedula() + " Salario: $ "
+					+ moneda.format(e.getSalario()) + "\n";
 		}
 		return texto;
 	}
@@ -607,54 +608,52 @@ public class Empleado extends Persona implements Serializable {
 	// clientes, empleados habitaciones y reservas
 	@SuppressWarnings("resource")
 	public static GridPane informacionHotel(GridPane panel) {
-		
+
 		panel.getChildren().clear();
 		panel.setAlignment(Pos.TOP_LEFT);
-		
-		DecimalFormat moneda = new DecimalFormat("###,###");
 
+		DecimalFormat moneda = new DecimalFormat("###,###");
 
 		// En este metodo se usa de ligadura dinamica en 2 ocaciones para hacer uso de
 		// los metodos de la clase Cliente
 		// y Empleado, que heredan de la clase abstract Persona.
 		Persona p;
-		String textotal="";
-		textotal+="El Hotel POOderoso cuenta altualmente con:\n";
-		if(Empleado.getLstEmpleado().size()>0) {
+		String textotal = "";
+		textotal += "El Hotel POOderoso cuenta altualmente con:\n";
+		if (Empleado.getLstEmpleado().size() > 0) {
 			p = Empleado.getLstEmpleado().get(0);
-			textotal+="Total de empleados: " + p.cantidadTotal()+"\n";
-			textotal+="Listado:\n";
-			textotal+=p.mostrarTotal();
-		}else {
-			textotal+="Total de empleados: 0\n";
+			textotal += "Total de empleados: " + p.cantidadTotal() + "\n";
+			textotal += "Listado:\n";
+			textotal += p.mostrarTotal();
+		} else {
+			textotal += "Total de empleados: 0\n";
 		}
-		
-		
+
 		if (Cliente.getLstCliente().size() > 0) {
 			p = Cliente.getLstCliente().get(0);
-			textotal+="Total de clientes: " + p.cantidadTotal()+"\n";
-			textotal+="Listado:\n";
-			textotal+=p.mostrarTotal();
+			textotal += "Total de clientes: " + p.cantidadTotal() + "\n";
+			textotal += "Listado:\n";
+			textotal += p.mostrarTotal();
 		} else {
-			textotal+="Total de clientes: 0\n";
+			textotal += "Total de clientes: 0\n";
 		}
 		if (Habitacion.getLstHabitacion().size() > 0) {
-			textotal+="Total de habitaciones: " + Habitacion.getLstHabitacion().size()+"\n";
-			textotal+="Listado:\n";
-			String texto="";
+			textotal += "Total de habitaciones: " + Habitacion.getLstHabitacion().size() + "\n";
+			textotal += "Listado:\n";
+			String texto = "";
 			for (Habitacion h : Habitacion.getLstHabitacion()) {
-				texto+="---> Numero de habitacion: " + h.getNumeroHabitacion() + " Descripcion: "
-						+ h.getDescripcion() + "\n   Tipo: " + h.getTipo() + "  Precio por dia : $ "
-						+ moneda.format(h.getPrecioDia())+"\n";
+				texto += "---> Numero de habitacion: " + h.getNumeroHabitacion() + " Descripcion: " + h.getDescripcion()
+						+ "\n   Tipo: " + h.getTipo() + "  Precio por dia : $ " + moneda.format(h.getPrecioDia())
+						+ "\n";
 			}
-			textotal+=texto;
+			textotal += texto;
 		} else {
-			textotal+="Total de habitaciones: 0\n";
+			textotal += "Total de habitaciones: 0\n";
 		}
 		if (Reserva.getLstReserva().size() > 0) {
-			textotal+="Total de reservas: " + Reserva.getLstReserva().size()+"\n";
-			textotal+="Listado:\n";
-			String texto="";
+			textotal += "Total de reservas: " + Reserva.getLstReserva().size() + "\n";
+			textotal += "Listado:\n";
+			String texto = "";
 			for (Reserva r : Reserva.getLstReserva()) {
 				// Se le da formato a las fechas para que imprima dd/mm/yyyy
 				Calendar fechaIniAux = Calendar.getInstance();
@@ -666,14 +665,14 @@ public class Empleado extends Persona implements Serializable {
 				String string2 = fechaFinAux.get(Calendar.DATE) + "/" + (fechaFinAux.get(Calendar.MONTH) + 1) + "/"
 						+ fechaFinAux.get(Calendar.YEAR);
 
-				texto+="---> Numero de reserva: " + r.getId() + " Cliente: " + r.getCliente().getNombre()
-						+ "\n    Fecha de reserva: Desde: " + string1 + " Hasta: " + string2+"\n";
+				texto += "---> Numero de reserva: " + r.getId() + " Cliente: " + r.getCliente().getNombre()
+						+ "\n    Fecha de reserva: Desde: " + string1 + " Hasta: " + string2 + "\n";
 			}
-			textotal+=texto;
+			textotal += texto;
 		} else {
-			textotal+="Total de Reserva: 0\n";
+			textotal += "Total de Reserva: 0\n";
 		}
-		Label tete=new Label(textotal);
+		Label tete = new Label(textotal);
 		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;

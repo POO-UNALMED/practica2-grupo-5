@@ -34,6 +34,8 @@ public class FieldPanel extends Pane {
 	private static String tipoClase;
 	private static int pos1 = 0;
 	private static GridPane panes;
+	private static String text1;
+	private static String text2;
 	private static List<String> data = new ArrayList<>();
 	Button success = new Button("Aceptar");
 	Button cancel = new Button("Cancelar");
@@ -54,9 +56,13 @@ public class FieldPanel extends Pane {
 
 	}
 
-	public GridPane crearFormulario(GridPane panel, String text1, String text2, String tipo) {
+	public GridPane crearFormulario(GridPane panel, String Text1, String Text2, String tipo) {
 		tipoClase = tipo;
 		panes = panel;
+		text1 = Text1;
+		text2 = Text2;
+		lstCombo = new ArrayList<>();
+		lstTextField = new ArrayList<>();
 		panel.getChildren().clear();
 		panel.setAlignment(Pos.TOP_LEFT);
 		panel.setHgap(5);
@@ -153,111 +159,105 @@ public class FieldPanel extends Pane {
 					}
 					if (isCorrect) {
 						try {
-							if(tipoClase.equals("bhabi")) {
-								String t="";
+							if (tipoClase.equals("bhabi")) {
+								String t = "";
 								if (Habitacion.getLstHabitacion().size() > 0) {
-									boolean aux=true;
-									for (Habitacion h :Habitacion.getLstHabitacion()) {
+									boolean aux = true;
+									for (Habitacion h : Habitacion.getLstHabitacion()) {
 										if (h.getNumeroHabitacion() == Integer.parseInt(data.get(0))) {
-											t+="Esta es su habitacion: \n";
-											t+="Numero de habitacion: " + h.getNumeroHabitacion()+"\n";
-											t+="Tipo: " + h.getTipo()+"\n";
-											t+="Descripcion: " + h.getDescripcion()+"\n";
+											t += "Esta es su habitacion: \n";
+											t += "Numero de habitacion: " + h.getNumeroHabitacion() + "\n";
+											t += "Tipo: " + h.getTipo() + "\n";
+											t += "Descripcion: " + h.getDescripcion() + "\n";
 											aux = false;
 											break;
 										}
 									}
-									if(aux) {
-										t+="No se encontro la habitacion";
+									if (aux) {
+										t += "No se encontro la habitacion";
 										a.setAlertType(AlertType.ERROR);
 										a.setHeaderText("Alerta");
 										a.setContentText(t);
 										a.show();
-									}
-									else {
+									} else {
 										a.setAlertType(AlertType.CONFIRMATION);
 										a.setTitle("Encontrado");
 										a.setHeaderText(t);
 										a.show();
-									}	
-								}else {
+									}
+								} else {
 									a.setAlertType(AlertType.ERROR);
 									a.setTitle("Alerta");
 									a.setHeaderText("Busquedad Fallida");
 									a.show();
 								}
-								
-							}
-							else if(tipoClase.equals("Bemple")) {
-								String t="";
+
+							} else if (tipoClase.equals("Bemple")) {
+								String t = "";
 								if (Empleado.getLstEmpleado().size() > 0) {
-									boolean aux=true;
-									for (Empleado ee :Empleado.getLstEmpleado()) {
+									boolean aux = true;
+									for (Empleado ee : Empleado.getLstEmpleado()) {
 										if (ee.getCedula() == Integer.parseInt(data.get(0))) {
-											t+="Datos del Empleado: \n";
-											t+="Nombre: " + ee.getNombre()+"\n";
-											t+="Cedula: " + ee.getCedula()+"\n";
+											t += "Datos del Empleado: \n";
+											t += "Nombre: " + ee.getNombre() + "\n";
+											t += "Cedula: " + ee.getCedula() + "\n";
 											aux = false;
 											break;
 										}
 									}
-									if(aux) {
-										t+="No se encontro el empleado";
+									if (aux) {
+										t += "No se encontro el empleado";
 										a.setAlertType(AlertType.ERROR);
 										a.setHeaderText("Alerta");
 										a.setContentText(t);
 										a.show();
-									}
-									else {
+									} else {
 										a.setAlertType(AlertType.CONFIRMATION);
 										a.setTitle("Encontrado");
 										a.setHeaderText(t);
 										a.show();
-									}	
-								}else {
+									}
+								} else {
 									a.setAlertType(AlertType.ERROR);
 									a.setTitle("Alerta");
 									a.setHeaderText("Busquedad Fallida");
 									a.show();
 								}
-							}
-							else if(tipoClase.equals("BCliente")) {
-								String t="";
+							} else if (tipoClase.equals("BCliente")) {
+								String t = "";
 								if (Cliente.getLstCliente().size() > 0) {
-									boolean aux=true;
-									for (Cliente c :Cliente.getLstCliente()) {
+									boolean aux = true;
+									for (Cliente c : Cliente.getLstCliente()) {
 										if (c.getCedula() == Integer.parseInt(data.get(0))) {
-											t+="Datos del Cliente: \n";
-											t+="Nombre: " + c.getNombre()+"\n";
-											t+="Cedula: " + c.getCedula()+"\n";
+											t += "Datos del Cliente: \n";
+											t += "Nombre: " + c.getNombre() + "\n";
+											t += "Cedula: " + c.getCedula() + "\n";
 											aux = false;
 											break;
 										}
 									}
-									if(aux) {
-										t+="No se encontro el cliente";
+									if (aux) {
+										t += "No se encontro el cliente";
 										a.setAlertType(AlertType.ERROR);
 										a.setHeaderText("Alerta");
 										a.setContentText(t);
 										a.show();
-									}
-									else {
+									} else {
 										a.setAlertType(AlertType.CONFIRMATION);
 										a.setTitle("Encontrado");
 										a.setHeaderText(t);
 										a.show();
-									}	
-								}else {
+									}
+								} else {
 									a.setAlertType(AlertType.ERROR);
 									a.setTitle("Alerta");
 									a.setHeaderText("Busquedad Fallida");
 									a.show();
 								}
-							}
-							else if(tipoClase.equals("BReserva")) {
-								String t="";
+							} else if (tipoClase.equals("BReserva")) {
+								String t = "";
 								if (Reserva.getLstReserva().size() > 0) {
-									boolean aux=true;
+									boolean aux = true;
 									for (Reserva r : Reserva.getLstReserva()) {
 										if (r.getId() == Integer.parseInt(data.get(0))) {
 											// Se le da formato a las fechas para que imprima dd/mm/yyyy
@@ -265,42 +265,41 @@ public class FieldPanel extends Pane {
 											fechaIniAux.setTime(r.getFechaInicio());
 											Calendar fechaFinAux = Calendar.getInstance();
 											fechaFinAux.setTime(r.getFechaFin());
-											String string1 = fechaIniAux.get(Calendar.DATE) + "/" + (fechaIniAux.get(Calendar.MONTH) + 1)
-													+ "/" + fechaIniAux.get(Calendar.YEAR);
-											String string2 = fechaFinAux.get(Calendar.DATE) + "/" + (fechaFinAux.get(Calendar.MONTH) + 1)
-													+ "/" + fechaFinAux.get(Calendar.YEAR);
+											String string1 = fechaIniAux.get(Calendar.DATE) + "/"
+													+ (fechaIniAux.get(Calendar.MONTH) + 1) + "/"
+													+ fechaIniAux.get(Calendar.YEAR);
+											String string2 = fechaFinAux.get(Calendar.DATE) + "/"
+													+ (fechaFinAux.get(Calendar.MONTH) + 1) + "/"
+													+ fechaFinAux.get(Calendar.YEAR);
 
-											t+="Esta es su reserva: \n";
-											t+="Numero de reserva: " + r.getId()+"\n";
-											t+="Cliente: " + r.getCliente().getNombre()+"\n";
-											t+="Fecha de la reserva: " + r.getFecha()+"\n";
-											t+="Tiempo de la reserva: Desde " + string1 + " hasta " + string2+"\n";
-											aux=false;
+											t += "Esta es su reserva: \n";
+											t += "Numero de reserva: " + r.getId() + "\n";
+											t += "Cliente: " + r.getCliente().getNombre() + "\n";
+											t += "Fecha de la reserva: " + r.getFecha() + "\n";
+											t += "Tiempo de la reserva: Desde " + string1 + " hasta " + string2 + "\n";
+											aux = false;
 										}
 									}
-									if(aux) {
-										t+="No se encontro la reserva";
+									if (aux) {
+										t += "No se encontro la reserva";
 										a.setAlertType(AlertType.ERROR);
 										a.setHeaderText("Alerta");
 										a.setContentText(t);
 										a.show();
-									}
-									else {
+									} else {
 										a.setAlertType(AlertType.CONFIRMATION);
 										a.setTitle("Encontrado");
 										a.setHeaderText(t);
 										a.show();
 									}
-								}
-								else {
+								} else {
 									a.setAlertType(AlertType.ERROR);
 									a.setTitle("Alerta");
 									a.setHeaderText("Busquedad Fallida");
 									a.show();
 								}
-								
-							}
-							else if (tipoClase.equals("Reserva")) {
+
+							} else if (tipoClase.equals("Reserva")) {
 								Date fechaI;
 								Date fechaF;
 								fechaI = globalServices.StringToDate(data.get(3));
@@ -333,13 +332,12 @@ public class FieldPanel extends Pane {
 								if (validate.Guardar(data, tipoClase)) {
 									a.setAlertType(AlertType.CONFIRMATION);
 									a.setTitle("Success");
-									a.setHeaderText("Guardado exitosamente");
+									a.setHeaderText("Proceso exitoso");
 									a.show();
 								} else {
 									a.setAlertType(AlertType.ERROR);
 									a.setTitle("Error");
-									a.setHeaderText("Error al intentar guardar");
-									a.setContentText("Uno o varios campos son invalidos");
+									a.setContentText("Proceso cancelado");
 									a.show();
 								}
 							}
@@ -369,6 +367,9 @@ public class FieldPanel extends Pane {
 					}
 				}
 			}
+			lstCombo = new ArrayList<>();
+			lstTextField = new ArrayList<>();
+			panes.getChildren().clear();
 		}
 	}
 

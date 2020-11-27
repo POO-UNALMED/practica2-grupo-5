@@ -790,6 +790,21 @@ public class Reserva implements Serializable {
 
 	}
 
+	public static void eliminarReserva(int numReserva) throws Exception {
+		Reserva r = reservaExist(numReserva);
+
+		if (r != null) {
+			Pago.elimarPago(r);
+			Habitacion.eliminarReserva(r);
+			r.getCliente().setPazYSalvo(true);
+			r.getCliente().setReserva(null);
+			eliminarReservaPagada(r);
+		} else {
+			throw new Exception("La reserva no existe");
+		}
+
+	}
+
 	public static void eliminarReservaPagada(Reserva r) {
 		int index = 0;
 		for (int i = 0; i < lstReserva.size(); i++) {
@@ -805,8 +820,8 @@ public class Reserva implements Serializable {
 	public static GridPane mostarReservasExistente(GridPane panel) {
 		panel.getChildren().clear();
 		panel.setAlignment(Pos.TOP_LEFT);
-		String t="";
-		t+="    RESERVAS EXISTENTES ACTUALMENTE\n";
+		String t = "";
+		t += "    RESERVAS EXISTENTES ACTUALMENTE\n";
 		if (Reserva.lstReserva.size() > 0) {
 			int n = 1;
 			for (Reserva r : Reserva.lstReserva) {
@@ -820,17 +835,17 @@ public class Reserva implements Serializable {
 				String string2 = fechaFinAux.get(Calendar.DATE) + "/" + (fechaFinAux.get(Calendar.MONTH) + 1) + "/"
 						+ fechaFinAux.get(Calendar.YEAR);
 
-				t+=n + "- Numero de reserva: " + r.getId() + " Cliente: " + r.getCliente().getNombre()
+				t += n + "- Numero de reserva: " + r.getId() + " Cliente: " + r.getCliente().getNombre()
 						+ "\n   Habitacion No. " + r.getHabitacion().getNumeroHabitacion() + " - "
 						+ r.getHabitacion().getTipo() + "\n   Fecha de reserva: Desde: " + string1 + " Hasta: "
-						+ string2+"\n";
+						+ string2 + "\n";
 				n++;
 			}
-			t+="Cantidad total de reservas: "+Reserva.lstReserva.size()+"\n";
+			t += "Cantidad total de reservas: " + Reserva.lstReserva.size() + "\n";
 		} else {
-			t+="No hay reservas existentes por el momento.";
+			t += "No hay reservas existentes por el momento.";
 		}
-		Label tete=new Label(t);
+		Label tete = new Label(t);
 		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
