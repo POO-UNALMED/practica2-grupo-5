@@ -1,3 +1,4 @@
+/*Clase perteneciente a la entrega anterior. Se encarga de centralizar todas las entradas del usuario, y dependiendo de cada entrada llama metodos distintos de todas las clases*/
 package uiMain;
 
 import java.util.Scanner;
@@ -43,11 +44,11 @@ public class MenuController {
 			break;
 		case 8:
 			if (globalServices.GuardarSesion()) {
-				System.out.println("Sesión guardada y finalizada exitosamente");
+				System.out.println("Sesiï¿½n guardada y finalizada exitosamente");
 				System.exit(0);
 				break;
 			} else {
-				System.out.println("Ocurrió un error al guardar, intentelo nuevamente");
+				System.out.println("Ocurriï¿½ un error al guardar, intentelo nuevamente");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -61,8 +62,8 @@ public class MenuController {
 	}
 
 	public void imprimirOpciones() {
-		System.out.println("Menú principal   ");
-		System.out.println("    digite el número de la opción que desee:");
+		System.out.println("Menï¿½ principal   ");
+		System.out.println("    digite el nï¿½mero de la opciï¿½n que desee:");
 		System.out.println("1- Reservas");
 		System.out.println("2- Check-In");
 		System.out.println("3- Habitaciones");
@@ -70,6 +71,6 @@ public class MenuController {
 		System.out.println("5- Clientes");
 		System.out.println("6- Empleados");
 		System.out.println("7- Informacion del hotel");
-		System.out.println("8- Guardar y Cerrar sesión");
+		System.out.println("8- Guardar y Cerrar sesiï¿½n");
 	}
 }

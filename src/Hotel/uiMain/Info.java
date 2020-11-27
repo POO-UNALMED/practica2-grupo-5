@@ -1,3 +1,4 @@
+/*Clase utilizada para recopilar los datos del hotel en un solo lugar*/
 package uiMain;
 
 import java.io.Serializable;

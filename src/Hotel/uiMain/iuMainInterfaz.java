@@ -1,3 +1,4 @@
+/*Esta clase se encarga de manejar las acciones y todo lo relacionado a la interfaz de menus superior, junto con los saltos de vistas hacia los paneles de formularios*/
 package uiMain;
 
 import java.util.ArrayList;
@@ -177,7 +178,7 @@ public class iuMainInterfaz {
 
 	}
 
-	class UnicoHandlerClass implements EventHandler<ActionEvent> {
+	class UnicoHandlerClass implements EventHandler<ActionEvent> { //Clase encargada de cargar los formularios de los usuarios dependiendo de la cantidad de datos que deban ingresar
 		@Override
 		public void handle(ActionEvent e) {
 			Object control = e.getSource();
@@ -255,9 +256,9 @@ public class iuMainInterfaz {
 					lista2.add("");
 					List<String> lista3 = new ArrayList<>();
 					lista3.add("Tipo");
-					lista3.add("Descripción");
+					lista3.add("Descripciï¿½n");
 					panel2 = new FieldPanel("Criterio", lista3, "Valor", lista2, lista).crearFormulario(panel2,
-							"Crear Habitación", "Creando nueva habitación", "Habitacion");
+							"Crear Habitaciï¿½n", "Creando nueva habitaciï¿½n", "Habitacion");
 				} else if (control.equals(menuItem13)) {
 					panel2 = Habitacion.mostrarHabitacionesExistente(panel2);
 

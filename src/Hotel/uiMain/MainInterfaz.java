@@ -1,3 +1,4 @@
+/*Clase encargada de cargar la interfaz principal del usuario. se conecta con la carpeta de imagenes del proyecto y tiene un serie de eventos con el mouse que modifican el comportamiento de las imagenes*/
 package uiMain;
 
 import java.io.FileInputStream;
@@ -55,7 +56,7 @@ public class MainInterfaz extends Application {
 	public ImageView i21;
 
 	@Override
-	public void start(Stage hotel) throws Exception {
+	public void start(Stage hotel) throws Exception { // Metodo que carga la primer interfaz con la que interactua el usuario, Muestra las fotos y la informacion de los empleados del hotel y sus fotos.
 		global globalServices = new global();
 		globalServices.CargarSesion();
 
@@ -226,11 +227,11 @@ public class MainInterfaz extends Application {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {// INICIO DE LA INTERFAZ GRAFICA
 		launch(args);
 	}
 
-	EventHandler<MouseEvent> mouseHandler1 = new EventHandler<MouseEvent>() {
+	EventHandler<MouseEvent> mouseHandler1 = new EventHandler<MouseEvent>() {//Cambio del texto de informacion de los empleado al hacer click sobre la zona
 		@Override
 		public void handle(MouseEvent mouseEvent) {
 			cont1++;
@@ -284,7 +285,7 @@ public class MainInterfaz extends Application {
 		}
 	};
 
-	class Botones1 implements EventHandler<ActionEvent> {
+	class Botones1 implements EventHandler<ActionEvent> {// Boton de Entrada, Crea la siguiente escena del menu
 		@Override
 		public void handle(ActionEvent e) {
 			Object control = e.getSource();

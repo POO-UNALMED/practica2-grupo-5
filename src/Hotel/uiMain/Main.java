@@ -1,3 +1,4 @@
+/*Clase perteneciente a la entrega anterior. Se encarga de ejecutar el programa iniciando su interfaz de consola.*/
 package uiMain;
 
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class Main {
 		System.out.println();
 		System.out.print("Porfavor ingrese su usuario: ");
 		sc.next();
-		System.out.print("Contraseña: ");
+		System.out.print("Contraseï¿½a: ");
 		sc.next();
 		boolean tru = true;
 		int n = 6;
@@ -30,7 +31,7 @@ public class Main {
 				System.out.println(".");
 			}
 		}
-		System.out.println("Conexión exitosa");
+		System.out.println("Conexiï¿½n exitosa");
 
 		boolean cargaron = globalServices.CargarSesion();
 //		if (cargaron) {

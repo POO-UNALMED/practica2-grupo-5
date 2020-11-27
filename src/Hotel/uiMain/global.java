@@ -1,3 +1,5 @@
+/*Clase perteneciente a la entrega previa, se encarga en parte de guardar, cargar y validar algunos de los datos de la base de datos*/
+
 package uiMain;
 
 import java.io.File;

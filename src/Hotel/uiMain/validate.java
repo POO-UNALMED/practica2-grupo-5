@@ -1,3 +1,4 @@
+/*Esta clase se encarga de conectar la informacion ingresada por el usuario en la IU, y validar que sea correcta (Manejo de Exepciones)*/
 package uiMain;
 
 import java.util.Date;
