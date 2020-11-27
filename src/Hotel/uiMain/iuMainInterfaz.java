@@ -168,8 +168,9 @@ public class iuMainInterfaz {
 
 		panel2.setAlignment(Pos.CENTER);
 		root.setCenter(panel2);
-//		Label cajapanel = new Label("inicio");
-//		panel2.add(cajapanel, 0, 0);
+		Label cajapanel = new Label("ACABAS DE ENTRAR A NUESTRO SISTEMA\n"
+				+ "Aca podras crear,buscar, observar, y muchas cosas en nuestro hotel");
+		panel2.add(cajapanel, 0, 0);
 
 		panelito.setTitle("Hotel POOderoso");
 		Scene mySceneMenu = new Scene(root, 750, 650);
