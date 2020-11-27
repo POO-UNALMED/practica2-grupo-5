@@ -1,10 +1,14 @@
 package uiMain;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import gestorAplicacion.Hotel.Habitacion;
+import gestorAplicacion.Hotel.Reserva;
+import gestorAplicacion.Terceros.Cliente;
+import gestorAplicacion.Terceros.Empleado;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -69,7 +73,7 @@ public class FieldPanel extends Pane {
 		cancel.setOnAction(pepe);
 
 		a1.setText(text1);
-		a1.setFont(new Font("Arial", 30));
+		a1.setFont(new Font("Arial", 25));
 		panel.add(a1, 0, 0, 5, 1);
 		a2.setText(text2);
 		a2.setFont(new Font("Arial", 20));
@@ -155,7 +159,147 @@ public class FieldPanel extends Pane {
 					}
 					if (isCorrect) {
 						try {
-							if (tipoClase.equals("Reserva")) {
+							if (tipoClase.equals("bhabi")) {
+								String t = "";
+								if (Habitacion.getLstHabitacion().size() > 0) {
+									boolean aux = true;
+									for (Habitacion h : Habitacion.getLstHabitacion()) {
+										if (h.getNumeroHabitacion() == Integer.parseInt(data.get(0))) {
+											t += "Esta es su habitacion: \n";
+											t += "Numero de habitacion: " + h.getNumeroHabitacion() + "\n";
+											t += "Tipo: " + h.getTipo() + "\n";
+											t += "Descripcion: " + h.getDescripcion() + "\n";
+											aux = false;
+											break;
+										}
+									}
+									if (aux) {
+										t += "No se encontro la habitacion";
+										a.setAlertType(AlertType.ERROR);
+										a.setHeaderText("Alerta");
+										a.setContentText(t);
+										a.show();
+									} else {
+										a.setAlertType(AlertType.CONFIRMATION);
+										a.setTitle("Encontrado");
+										a.setHeaderText(t);
+										a.show();
+									}
+								} else {
+									a.setAlertType(AlertType.ERROR);
+									a.setTitle("Alerta");
+									a.setHeaderText("Busquedad Fallida");
+									a.show();
+								}
+
+							} else if (tipoClase.equals("Bemple")) {
+								String t = "";
+								if (Empleado.getLstEmpleado().size() > 0) {
+									boolean aux = true;
+									for (Empleado ee : Empleado.getLstEmpleado()) {
+										if (ee.getCedula() == Integer.parseInt(data.get(0))) {
+											t += "Datos del Empleado: \n";
+											t += "Nombre: " + ee.getNombre() + "\n";
+											t += "Cedula: " + ee.getCedula() + "\n";
+											aux = false;
+											break;
+										}
+									}
+									if (aux) {
+										t += "No se encontro el empleado";
+										a.setAlertType(AlertType.ERROR);
+										a.setHeaderText("Alerta");
+										a.setContentText(t);
+										a.show();
+									} else {
+										a.setAlertType(AlertType.CONFIRMATION);
+										a.setTitle("Encontrado");
+										a.setHeaderText(t);
+										a.show();
+									}
+								} else {
+									a.setAlertType(AlertType.ERROR);
+									a.setTitle("Alerta");
+									a.setHeaderText("Busquedad Fallida");
+									a.show();
+								}
+							} else if (tipoClase.equals("BCliente")) {
+								String t = "";
+								if (Cliente.getLstCliente().size() > 0) {
+									boolean aux = true;
+									for (Cliente c : Cliente.getLstCliente()) {
+										if (c.getCedula() == Integer.parseInt(data.get(0))) {
+											t += "Datos del Cliente: \n";
+											t += "Nombre: " + c.getNombre() + "\n";
+											t += "Cedula: " + c.getCedula() + "\n";
+											aux = false;
+											break;
+										}
+									}
+									if (aux) {
+										t += "No se encontro el cliente";
+										a.setAlertType(AlertType.ERROR);
+										a.setHeaderText("Alerta");
+										a.setContentText(t);
+										a.show();
+									} else {
+										a.setAlertType(AlertType.CONFIRMATION);
+										a.setTitle("Encontrado");
+										a.setHeaderText(t);
+										a.show();
+									}
+								} else {
+									a.setAlertType(AlertType.ERROR);
+									a.setTitle("Alerta");
+									a.setHeaderText("Busquedad Fallida");
+									a.show();
+								}
+							} else if (tipoClase.equals("BReserva")) {
+								String t = "";
+								if (Reserva.getLstReserva().size() > 0) {
+									boolean aux = true;
+									for (Reserva r : Reserva.getLstReserva()) {
+										if (r.getId() == Integer.parseInt(data.get(0))) {
+											// Se le da formato a las fechas para que imprima dd/mm/yyyy
+											Calendar fechaIniAux = Calendar.getInstance();
+											fechaIniAux.setTime(r.getFechaInicio());
+											Calendar fechaFinAux = Calendar.getInstance();
+											fechaFinAux.setTime(r.getFechaFin());
+											String string1 = fechaIniAux.get(Calendar.DATE) + "/"
+													+ (fechaIniAux.get(Calendar.MONTH) + 1) + "/"
+													+ fechaIniAux.get(Calendar.YEAR);
+											String string2 = fechaFinAux.get(Calendar.DATE) + "/"
+													+ (fechaFinAux.get(Calendar.MONTH) + 1) + "/"
+													+ fechaFinAux.get(Calendar.YEAR);
+
+											t += "Esta es su reserva: \n";
+											t += "Numero de reserva: " + r.getId() + "\n";
+											t += "Cliente: " + r.getCliente().getNombre() + "\n";
+											t += "Fecha de la reserva: " + r.getFecha() + "\n";
+											t += "Tiempo de la reserva: Desde " + string1 + " hasta " + string2 + "\n";
+											aux = false;
+										}
+									}
+									if (aux) {
+										t += "No se encontro la reserva";
+										a.setAlertType(AlertType.ERROR);
+										a.setHeaderText("Alerta");
+										a.setContentText(t);
+										a.show();
+									} else {
+										a.setAlertType(AlertType.CONFIRMATION);
+										a.setTitle("Encontrado");
+										a.setHeaderText(t);
+										a.show();
+									}
+								} else {
+									a.setAlertType(AlertType.ERROR);
+									a.setTitle("Alerta");
+									a.setHeaderText("Busquedad Fallida");
+									a.show();
+								}
+
+							} else if (tipoClase.equals("Reserva")) {
 								Date fechaI;
 								Date fechaF;
 								fechaI = globalServices.StringToDate(data.get(3));

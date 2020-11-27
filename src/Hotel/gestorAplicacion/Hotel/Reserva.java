@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import gestorAplicacion.Terceros.Cliente;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -816,11 +817,9 @@ public class Reserva implements Serializable {
 		Pago.elimarPago(r);
 	}
 
-	@SuppressWarnings("resource")
 	public static GridPane mostarReservasExistente(GridPane panel) {
-		global globalService = new global();
-		Scanner sc = new Scanner(System.in);
-		globalService.clearScr();
+		panel.getChildren().clear();
+		panel.setAlignment(Pos.TOP_LEFT);
 		String t = "";
 		t += "    RESERVAS EXISTENTES ACTUALMENTE\n";
 		if (Reserva.lstReserva.size() > 0) {
@@ -847,7 +846,7 @@ public class Reserva implements Serializable {
 			t += "No hay reservas existentes por el momento.";
 		}
 		Label tete = new Label(t);
-		tete.setFont(new Font("Arial", 20));
+		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
 	}

@@ -23,6 +23,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.format.DateTimeFormat;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -484,12 +485,10 @@ public class Habitacion implements Serializable {
 		Habitacion.Guardar();
 	}
 
-	@SuppressWarnings("resource")
 	public static GridPane mostrarHabitacionesExistente(GridPane panel) {
 		DecimalFormat moneda = new DecimalFormat("###,###");
-		global globalService = new global();
-		Scanner sc = new Scanner(System.in);
-		globalService.clearScr();
+		panel.getChildren().clear();
+		panel.setAlignment(Pos.TOP_LEFT);
 		String t = "";
 		t += "HABITACIONES EXISTENTES ACTUALMENTE\n";
 		if (Habitacion.lstHabitacion.size() > 0) {
@@ -505,7 +504,7 @@ public class Habitacion implements Serializable {
 			t += "No hay habitaciones existentes por el momento.";
 		}
 		Label tete = new Label(t);
-		tete.setFont(new Font("Arial", 20));
+		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
 	}
@@ -528,8 +527,6 @@ public class Habitacion implements Serializable {
 				try {
 					fecha1 = globalServices.StringToDate(sc.next());
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
 				if (fecha1 != null) {
 					DateisCorrect = true;
@@ -544,8 +541,6 @@ public class Habitacion implements Serializable {
 				try {
 					fecha2 = globalServices.StringToDate(sc.next());
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
 				if (fecha2 != null) {
 					DateisCorrect = true;

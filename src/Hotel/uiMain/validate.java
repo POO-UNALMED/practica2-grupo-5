@@ -1,5 +1,6 @@
 package uiMain;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import gestorAplicacion.Hotel.*;
@@ -33,18 +34,22 @@ public class validate {
 				}
 				Pago.crearPago(r, alta);
 				cli.setReserva(r);
+				isCorrect = true;
 			} else {
 				throw new Exception("El Cliente no esta registrado");
 			}
 			break;
 		case "Habitacion":
 			new Habitacion(data.get(0), data.get(1));
+			isCorrect = true;
 			break;
 		case "Empleado":
 			new Empleado(Integer.parseInt(data.get(1)), data.get(0), Float.parseFloat(data.get(2)));
+			isCorrect = true;
 			break;
 		case "Cliente":
 			new Cliente(Integer.parseInt(data.get(0)), data.get(1));
+			isCorrect = true;
 			break;
 		case "EReserva":
 			Reserva.eliminarReserva(Integer.parseInt(data.get(0)));
