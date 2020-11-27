@@ -30,6 +30,8 @@ public class FieldPanel extends Pane {
 	private static String tipoClase;
 	private static int pos1 = 0;
 	private static GridPane panes;
+	private static String text1;
+	private static String text2;
 	private static List<String> data = new ArrayList<>();
 	Button success = new Button("Aceptar");
 	Button cancel = new Button("Cancelar");
@@ -50,9 +52,13 @@ public class FieldPanel extends Pane {
 
 	}
 
-	public GridPane crearFormulario(GridPane panel, String text1, String text2, String tipo) {
+	public GridPane crearFormulario(GridPane panel, String Text1, String Text2, String tipo) {
 		tipoClase = tipo;
 		panes = panel;
+		text1 = Text1;
+		text2 = Text2;
+		lstCombo = new ArrayList<>();
+		lstTextField = new ArrayList<>();
 		panel.getChildren().clear();
 		panel.setAlignment(Pos.TOP_LEFT);
 		panel.setHgap(5);
@@ -182,13 +188,12 @@ public class FieldPanel extends Pane {
 								if (validate.Guardar(data, tipoClase)) {
 									a.setAlertType(AlertType.CONFIRMATION);
 									a.setTitle("Success");
-									a.setHeaderText("Guardado exitosamente");
+									a.setHeaderText("Proceso exitoso");
 									a.show();
 								} else {
 									a.setAlertType(AlertType.ERROR);
 									a.setTitle("Error");
-									a.setHeaderText("Error al intentar guardar");
-									a.setContentText("Uno o varios campos son invalidos");
+									a.setContentText("Proceso cancelado");
 									a.show();
 								}
 							}
@@ -218,6 +223,9 @@ public class FieldPanel extends Pane {
 					}
 				}
 			}
+			lstCombo = new ArrayList<>();
+			lstTextField = new ArrayList<>();
+			panes.getChildren().clear();
 		}
 	}
 

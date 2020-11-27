@@ -442,7 +442,7 @@ public class Cliente extends Persona implements Serializable {
 	}
 
 	// Sobrecarga de metodo eliminar.
-	private static void eliminarCliente(Cliente c) {
+	public static void eliminarCliente(Cliente c) {
 		for (int i = 0; i < lstCliente.size(); i++) {
 			if (lstCliente.get(i).getCedula() == c.getCedula()) {
 				lstCliente.remove(i);
@@ -454,9 +454,11 @@ public class Cliente extends Persona implements Serializable {
 
 	public static void EliminarEmpleado(Empleado e) {
 		for (int j = 0; j < lstCliente.size(); j++) {
-			if (lstCliente.get(j).getEmpleado().getCedula() == e.getCedula()) {
-				lstCliente.get(j).setEmpleado(null);
-				Reserva.ActualizarCliente(lstCliente.get(j));
+			if (lstCliente.get(j).getEmpleado() != null) {
+				if (lstCliente.get(j).getEmpleado().getCedula() == e.getCedula()) {
+					lstCliente.get(j).setEmpleado(null);
+					Reserva.ActualizarCliente(lstCliente.get(j));
+				}
 			}
 		}
 		Cliente.Guardar();
@@ -468,29 +470,29 @@ public class Cliente extends Persona implements Serializable {
 		global globalService = new global();
 		Scanner sc = new Scanner(System.in);
 		globalService.clearScr();
-		
-		String textotal="";
-		textotal+="    CLIENTES EXISTENTES ACTUALMENTE\n";
+
+		String textotal = "";
+		textotal += "    CLIENTES EXISTENTES ACTUALMENTE\n";
 		if (Cliente.lstCliente.size() > 0) {
 			int n = 1;
 			for (Cliente c : Cliente.lstCliente) {
 				if (c.getEmpleado() != null) {
-					textotal+=n + "- Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula()
-							+ " Empleado a Cargo: " + c.getEmpleado().getNombre()+"\n";
+					textotal += n + "- Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula()
+							+ " Empleado a Cargo: " + c.getEmpleado().getNombre() + "\n";
 					n++;
 
 				} else {
-					textotal+=n + "- Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula() + "\n";
+					textotal += n + "- Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula() + "\n";
 					n++;
 				}
 			}
-			textotal+="Total de clientes: " + Cliente.lstCliente.size();
+			textotal += "Total de clientes: " + Cliente.lstCliente.size();
 
 		} else {
-			textotal+="No hay clientes existentes por el momento.";
+			textotal += "No hay clientes existentes por el momento.";
 
 		}
-		Label tete=new Label(textotal);
+		Label tete = new Label(textotal);
 		tete.setFont(new Font("Arial", 20));
 		panel.add(tete, 0, 0);
 		return panel;
@@ -624,14 +626,14 @@ public class Cliente extends Persona implements Serializable {
 	}
 
 	public String mostrarTotal() {
-		String texto="";
+		String texto = "";
 		for (Cliente c : Cliente.lstCliente) {
 			if (c.getEmpleado() != null) {
-				texto+="---> Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula()
-						+ " Empleado a Cargo: " + c.getEmpleado().getNombre();
+				texto += "---> Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula() + " Empleado a Cargo: "
+						+ c.getEmpleado().getNombre();
 
 			} else {
-				texto+="---> Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula();
+				texto += "---> Nombre: " + c.getNombre() + "\n   Cedula: " + c.getCedula();
 			}
 		}
 		return texto;
