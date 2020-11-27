@@ -430,9 +430,8 @@ public class Empleado extends Persona implements Serializable {
 	@SuppressWarnings("resource")
 	public static GridPane mostrarEmpleadosExistente(GridPane panel) {
 		DecimalFormat moneda = new DecimalFormat("###,###");
-		global globalService = new global();
-		Scanner sc = new Scanner(System.in);
-		globalService.clearScr();
+		panel.getChildren().clear();
+		panel.setAlignment(Pos.TOP_LEFT);
 		String textotal="";
 		textotal+="    EMPLEADOS EXISTENTES ACTUALMENTE \n";
 		if (Empleado.lstEmpleado.size() > 0) {
@@ -447,7 +446,7 @@ public class Empleado extends Persona implements Serializable {
 			textotal+="No hay empleados existentes por el momento.";
 		}
 		Label tete=new Label(textotal);
-		tete.setFont(new Font("Arial", 20));
+		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
 	}
@@ -613,9 +612,7 @@ public class Empleado extends Persona implements Serializable {
 		panel.setAlignment(Pos.TOP_LEFT);
 		
 		DecimalFormat moneda = new DecimalFormat("###,###");
-		global globalService = new global();
-		Scanner sc = new Scanner(System.in);
-		globalService.clearScr();
+
 
 		// En este metodo se usa de ligadura dinamica en 2 ocaciones para hacer uso de
 		// los metodos de la clase Cliente
@@ -677,7 +674,7 @@ public class Empleado extends Persona implements Serializable {
 			textotal+="Total de Reserva: 0\n";
 		}
 		Label tete=new Label(textotal);
-		tete.setFont(new Font("Arial", 20));
+		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
 	}

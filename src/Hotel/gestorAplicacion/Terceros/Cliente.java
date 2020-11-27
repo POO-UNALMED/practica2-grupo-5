@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import gestorAplicacion.Hotel.Reserva;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -465,9 +466,8 @@ public class Cliente extends Persona implements Serializable {
 	// Recorre la lista de clientes que se encuentra en la base de datos.
 	@SuppressWarnings("resource")
 	public static GridPane mostrarClientesExistente(GridPane panel) {
-		global globalService = new global();
-		Scanner sc = new Scanner(System.in);
-		globalService.clearScr();
+		panel.getChildren().clear();
+		panel.setAlignment(Pos.TOP_LEFT);
 		
 		String textotal="";
 		textotal+="    CLIENTES EXISTENTES ACTUALMENTE\n";
@@ -491,7 +491,7 @@ public class Cliente extends Persona implements Serializable {
 
 		}
 		Label tete=new Label(textotal);
-		tete.setFont(new Font("Arial", 20));
+		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
 	}

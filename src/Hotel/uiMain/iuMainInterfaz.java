@@ -30,7 +30,7 @@ public class iuMainInterfaz {
 	GridPane panel2 = new GridPane();
 
 	MenuItem menuItem1 = new MenuItem("Crear Reserva"); // en proceso
-	MenuItem menuItem2 = new MenuItem("Buscar Reserva");
+	MenuItem menuItem2 = new MenuItem("Buscar Reserva");  //Listo
 	MenuItem menuItem3 = new MenuItem("Eliminar Reserva");
 	MenuItem menuItem4 = new MenuItem("Cancelar Reserva");
 	MenuItem menuItem5 = new MenuItem("Mostrar Listado de Reserva"); // listo
@@ -38,7 +38,7 @@ public class iuMainInterfaz {
 	MenuItem menuItem7 = new MenuItem("Asignar Habitacion al Cliente");
 	MenuItem menuItem8 = new MenuItem("Mostrar Habitacion Disponible");
 	MenuItem menuItem9 = new MenuItem("Crear Habitacion"); // listo
-	MenuItem menuItem10 = new MenuItem("Buscar Habitacion");
+	MenuItem menuItem10 = new MenuItem("Buscar Habitacion"); //listo
 	MenuItem menuItem11 = new MenuItem("Editar Habitacion");
 	MenuItem menuItem12 = new MenuItem("Eliminar Habitacion");
 	MenuItem menuItem13 = new MenuItem("Mostrar Listado de Habitaciones"); // listp
@@ -48,12 +48,12 @@ public class iuMainInterfaz {
 	MenuItem menuItem17 = new MenuItem("Informacion Caja"); // listo
 	MenuItem menuItem18 = new MenuItem("Pagar Empleados (Nomina)");
 	MenuItem menuItem19 = new MenuItem("Crear Cliente"); // listo
-	MenuItem menuItem20 = new MenuItem("Buscar Cliente");
+	MenuItem menuItem20 = new MenuItem("Buscar Cliente");//listo
 	MenuItem menuItem21 = new MenuItem("Editar Cliente");
 	MenuItem menuItem22 = new MenuItem("Eliminar Cliente");
 	MenuItem menuItem23 = new MenuItem("Mostrar Listado Cliente"); // listp
 	MenuItem menuItem24 = new MenuItem("Crear Empleado"); // listo
-	MenuItem menuItem25 = new MenuItem("Buscar Empleado");
+	MenuItem menuItem25 = new MenuItem("Buscar Empleado");//listo
 	MenuItem menuItem26 = new MenuItem("Editar Empleado");
 	MenuItem menuItem27 = new MenuItem("Eliminar Empleado");
 	MenuItem menuItem28 = new MenuItem("Dar Informacion");
@@ -216,10 +216,14 @@ public class iuMainInterfaz {
 					panel2 = f.crearFormulario(panel2, "Crear Reserva", "Se crea reserva", "Reserva");
 
 				} else if (control.equals(menuItem2)) {
-					panel2.getChildren().clear();
-					panel2.setAlignment(Pos.CENTER);
-
-					panel2.add(new Label("ini"), 0, 0);
+					boolean lista[] = { true, true, true, true, true, true, true, true };
+					List<String> lista2 = new ArrayList<>();
+					lista2.add(null);
+					List<String> lista3 = new ArrayList<>();
+					lista3.add("Numero de Reserva");
+					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
+					panel2 = f.crearFormulario(panel2, "Busquedad de Reserva", "Se busca la reserva", "BReserva");
+					
 				} else if (control.equals(menuItem3)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
@@ -241,13 +245,18 @@ public class iuMainInterfaz {
 				} else if (control.equals(menuItem7)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-
 					panel2.add(new Label("inici"), 0, 0);
+					
 				} else if (control.equals(menuItem8)) {
-					panel2.getChildren().clear();
-					panel2.setAlignment(Pos.CENTER);
+					boolean lista[] = { true, true, true, true, true, true, true, true };
+					List<String> lista2 = new ArrayList<>();
+					lista2.add("fecha");
+					List<String> lista3 = new ArrayList<>();
+					lista3.add("Fecha Fin");
+					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
+					panel2 = f.crearFormulario(panel2, "Busquedad de Habitaciones Disp", "Se busca habitaciones  para el Dia de hoy", "3check-in");
+					
 
-					panel2.add(new Label("inici"), 0, 0);
 				} else if (control.equals(menuItem9)) {
 					boolean lista[] = { false, true, false, false, false, false, false, false };
 					List<String> lista2 = new ArrayList<>();
@@ -258,7 +267,19 @@ public class iuMainInterfaz {
 					lista3.add("Descripción");
 					panel2 = new FieldPanel("Criterio", lista3, "Valor", lista2, lista).crearFormulario(panel2,
 							"Crear Habitación", "Creando nueva habitación", "Habitacion");
-				} else if (control.equals(menuItem13)) {
+				}else if (control.equals(menuItem10)) {
+					boolean lista[] = { true, true, true, true, true, true, true, true };
+					List<String> lista2 = new ArrayList<>();
+					lista2.add(null);
+					List<String> lista3 = new ArrayList<>();
+					lista3.add("Numero de Habitacion");
+					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
+					panel2 = f.crearFormulario(panel2, "Busquedad de Habitacion", "Se busca la habitacion", "bhabi");
+					
+					
+					
+				} 
+				else if (control.equals(menuItem13)) {
 					panel2 = Habitacion.mostrarHabitacionesExistente(panel2);
 
 				} else if (control.equals(menuItem17)) {
@@ -275,7 +296,17 @@ public class iuMainInterfaz {
 					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
 					panel2 = f.crearFormulario(panel2, "Crear Cliente", "Se crea un cliente", "Cliente");
 
-				} else if (control.equals(menuItem23)) {
+				}else if (control.equals(menuItem20)) {
+					boolean lista[] = { true, true, true, true, true, true, true, true };
+					List<String> lista2 = new ArrayList<>();
+					lista2.add(null);
+					List<String> lista3 = new ArrayList<>();
+					lista3.add("Cedula");
+					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
+					panel2 = f.crearFormulario(panel2, "Busquedad de Cliente", "Se busca el cliente", "BCliente");
+						
+				}
+				else if (control.equals(menuItem23)) {
 					panel2 = Cliente.mostrarClientesExistente(panel2);
 				} else if (control.equals(menuItem24)) {
 					boolean lista[] = { true, true, true, true, true, true, true, true };
@@ -291,10 +322,14 @@ public class iuMainInterfaz {
 					panel2 = f.crearFormulario(panel2, "Crear Empleado", "Se crea un empleado", "Empleado");
 
 				} else if (control.equals(menuItem25)) {
-					panel2.getChildren().clear();
-					panel2.setAlignment(Pos.CENTER);
-
-					panel2.add(new Label("inici"), 0, 0);
+					boolean lista[] = { true, true, true, true, true, true, true, true };
+					List<String> lista2 = new ArrayList<>();
+					lista2.add(null);
+					List<String> lista3 = new ArrayList<>();
+					lista3.add("Cedula");
+					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
+					panel2 = f.crearFormulario(panel2, "Busquedad de Empleado", "Se busca el empleado", "Bemple");
+					
 				} else if (control.equals(menuItem29)) {
 					panel2 = Empleado.mostrarEmpleadosExistente(panel2);
 				} else if (control.equals(menuItem30)) {

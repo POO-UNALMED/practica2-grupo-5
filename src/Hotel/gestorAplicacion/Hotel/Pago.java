@@ -17,6 +17,7 @@ import java.util.Scanner;
 
 import gestorAplicacion.Terceros.Cliente;
 import gestorAplicacion.Terceros.Empleado;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -353,9 +354,8 @@ public class Pago implements Serializable {
 	@SuppressWarnings("resource")
 	public static GridPane caja(GridPane panel) {
 		DecimalFormat moneda = new DecimalFormat("###,###");
-		global globalServices = new global();
-		Scanner sc = new Scanner(System.in);
-		globalServices.clearScr();
+		panel.getChildren().clear();
+		panel.setAlignment(Pos.TOP_LEFT);
 		String t="";
 		t+="CAJA\n";
 		t+="Estado del Hotel POOderoso\n";
@@ -363,7 +363,7 @@ public class Pago implements Serializable {
 		t+="Ingresos obtenidos: $ " + moneda.format(Pago.caja)+"\n";
 		t+="Egresos obtenidos: $ " + moneda.format(Pago.egreso)+"\n";
 		Label tete=new Label(t);
-		tete.setFont(new Font("Arial", 20));
+		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
 	}
