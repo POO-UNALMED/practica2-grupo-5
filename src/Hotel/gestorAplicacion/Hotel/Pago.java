@@ -17,6 +17,9 @@ import java.util.Scanner;
 
 import gestorAplicacion.Terceros.Cliente;
 import gestorAplicacion.Terceros.Empleado;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import uiMain.MenuController;
 import uiMain.global;
 
@@ -67,7 +70,7 @@ public class Pago implements Serializable {
 			mostrarPagosPendientes();
 			break;
 		case 3:
-			caja();
+//			caja();
 			break;
 		case 4:
 			pagarEmpleados();
@@ -236,7 +239,7 @@ public class Pago implements Serializable {
 					while (!buenon) {
 						String resp = sc.next();
 						if (resp.equals("s") || resp.equals("S")) {
-							Pago.caja();
+//							Pago.caja();
 							buenon = true;
 						} else if (resp.equals("n") || resp.equals("N")) {
 							buenon = true;
@@ -348,22 +351,21 @@ public class Pago implements Serializable {
 	// Método para mostrar el flujo de caja del hotel
 
 	@SuppressWarnings("resource")
-	public static void caja() {
+	public static GridPane caja(GridPane panel) {
 		DecimalFormat moneda = new DecimalFormat("###,###");
 		global globalServices = new global();
 		Scanner sc = new Scanner(System.in);
 		globalServices.clearScr();
-		System.out.println("CAJA");
-		System.out.println();
-		System.out.println("Estado del Hotel POOderoso");
-		System.out.println("Ultimo egreso: $ " + moneda.format(Pago.pagos));
-		System.out.println();
-		System.out.println("Ingresos obtenidos: $ " + moneda.format(Pago.caja));
-		System.out.println("Egresos obtenidos: $ " + moneda.format(Pago.egreso));
-		System.out.println();
-		System.out.println("Presione '1' para regresar");
-		sc.next();
-		Pago.menuPago();
+		String t="";
+		t+="CAJA\n";
+		t+="Estado del Hotel POOderoso\n";
+		t+="Ultimo egreso: $ " + moneda.format(Pago.pagos)+"\n";
+		t+="Ingresos obtenidos: $ " + moneda.format(Pago.caja)+"\n";
+		t+="Egresos obtenidos: $ " + moneda.format(Pago.egreso)+"\n";
+		Label tete=new Label(t);
+		tete.setFont(new Font("Arial", 20));
+		panel.add(tete, 0, 0);
+		return panel;
 	}
 
 	public static void ingresoCaja(double valor) {

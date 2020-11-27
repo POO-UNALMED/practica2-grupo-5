@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import gestorAplicacion.Terceros.Cliente;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import uiMain.MenuController;
 import uiMain.global;
 
@@ -70,7 +73,7 @@ public class Reserva implements Serializable {
 			cancelarReserva();
 			break;
 		case 5:
-			mostarReservasExistente();
+//			mostarReservasExistente();
 			break;
 		case 6:
 			new MenuController();
@@ -799,11 +802,12 @@ public class Reserva implements Serializable {
 	}
 
 	@SuppressWarnings("resource")
-	public static void mostarReservasExistente() {
+	public static GridPane mostarReservasExistente(GridPane panel) {
 		global globalService = new global();
 		Scanner sc = new Scanner(System.in);
 		globalService.clearScr();
-		System.out.println("    RESERVAS EXISTENTES ACTUALMENTE\n");
+		String t="";
+		t+="    RESERVAS EXISTENTES ACTUALMENTE\n";
 		if (Reserva.lstReserva.size() > 0) {
 			int n = 1;
 			for (Reserva r : Reserva.lstReserva) {
@@ -817,25 +821,20 @@ public class Reserva implements Serializable {
 				String string2 = fechaFinAux.get(Calendar.DATE) + "/" + (fechaFinAux.get(Calendar.MONTH) + 1) + "/"
 						+ fechaFinAux.get(Calendar.YEAR);
 
-				System.out.println(n + "- Numero de reserva: " + r.getId() + " Cliente: " + r.getCliente().getNombre()
+				t+=n + "- Numero de reserva: " + r.getId() + " Cliente: " + r.getCliente().getNombre()
 						+ "\n   Habitacion No. " + r.getHabitacion().getNumeroHabitacion() + " - "
 						+ r.getHabitacion().getTipo() + "\n   Fecha de reserva: Desde: " + string1 + " Hasta: "
-						+ string2);
+						+ string2+"\n";
 				n++;
 			}
-			System.out.println();
-			System.out.println("Presione '1' para regresar");
-			sc.next();
-			Reserva.menuReserva();
+			t+="Cantidad total de reservas: "+Reserva.lstReserva.size()+"\n";
 		} else {
-			System.out.println("No hay reservas existentes por el momento.");
-			try {
-				Thread.sleep(3000);
-				Reserva.menuReserva();
-			} catch (InterruptedException e) {
-				Reserva.menuReserva();
-			}
+			t+="No hay reservas existentes por el momento.";
 		}
+		Label tete=new Label(t);
+		tete.setFont(new Font("Arial", 20));
+		panel.add(tete, 0, 0);
+		return panel;
 	}
 
 	public static boolean Guardar() {

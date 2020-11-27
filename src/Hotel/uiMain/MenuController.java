@@ -39,7 +39,7 @@ public class MenuController {
 			Empleado.menuEmpleado();
 			break;
 		case 7:
-			Empleado.informacionHotel();
+//			Empleado.informacionHotel();
 			break;
 		case 8:
 			if (globalServices.GuardarSesion()) {

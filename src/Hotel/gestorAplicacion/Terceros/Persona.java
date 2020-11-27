@@ -34,6 +34,6 @@ public abstract class Persona implements Serializable {
 
 	public abstract int cantidadTotal();
 
-	public abstract void mostrarTotal();
+	public abstract String mostrarTotal();
 
 }

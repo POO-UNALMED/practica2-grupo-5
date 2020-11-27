@@ -3,7 +3,11 @@ package uiMain;
 import java.util.ArrayList;
 import java.util.List;
 
+import gestorAplicacion.Hotel.Habitacion;
+import gestorAplicacion.Hotel.Pago;
 import gestorAplicacion.Hotel.Reserva;
+import gestorAplicacion.Terceros.Cliente;
+import gestorAplicacion.Terceros.Empleado;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -25,36 +29,36 @@ public class iuMainInterfaz {
 	BorderPane root = new BorderPane();
 	GridPane panel2 = new GridPane();
 
-	MenuItem menuItem1 = new MenuItem("Crear Reserva");
+	MenuItem menuItem1 = new MenuItem("Crear Reserva");    //en proceso
 	MenuItem menuItem2 = new MenuItem("Buscar Reserva");
 	MenuItem menuItem3 = new MenuItem("Eliminar Reserva");
 	MenuItem menuItem4 = new MenuItem("Cancelar Reserva");
-	MenuItem menuItem5 = new MenuItem("Mostrar Listado de Reserva");
+	MenuItem menuItem5 = new MenuItem("Mostrar Listado de Reserva");			//listo
 	MenuItem menuItem6 = new MenuItem("Verificacion de disponibilidad de habitacion por tipo");
 	MenuItem menuItem7 = new MenuItem("Asignar Habitacion al Cliente");
 	MenuItem menuItem8 = new MenuItem("Mostrar Habitacion Disponible");
-	MenuItem menuItem9 = new MenuItem("Crear Habitacion");
+	MenuItem menuItem9 = new MenuItem("Crear Habitacion");             //listo
 	MenuItem menuItem10 = new MenuItem("Buscar Habitacion");
 	MenuItem menuItem11 = new MenuItem("Editar Habitacion");
 	MenuItem menuItem12 = new MenuItem("Eliminar Habitacion");
-	MenuItem menuItem13 = new MenuItem("Mostrar Listado de Habitaciones");
+	MenuItem menuItem13 = new MenuItem("Mostrar Listado de Habitaciones");  //listp
 	MenuItem menuItem14 = new MenuItem("Verificar Disponibilidad");
 	MenuItem menuItem15 = new MenuItem("Pagar Factura");
 	MenuItem menuItem16 = new MenuItem("Mostrar Pago Pendiente");
-	MenuItem menuItem17 = new MenuItem("Informacion Caja");
+	MenuItem menuItem17 = new MenuItem("Informacion Caja");					//listo
 	MenuItem menuItem18 = new MenuItem("Pagar Empleados (Nomina)");
-	MenuItem menuItem19 = new MenuItem("Crear Cliente");
+	MenuItem menuItem19 = new MenuItem("Crear Cliente");                   //listo
 	MenuItem menuItem20 = new MenuItem("Buscar Cliente");
 	MenuItem menuItem21 = new MenuItem("Editar Cliente");
 	MenuItem menuItem22 = new MenuItem("Eliminar Cliente");
-	MenuItem menuItem23 = new MenuItem("Mostrar Listado Cliente");
-	MenuItem menuItem24 = new MenuItem("Crear Empleado");
+	MenuItem menuItem23 = new MenuItem("Mostrar Listado Cliente");			//listp
+	MenuItem menuItem24 = new MenuItem("Crear Empleado");                  //listo
 	MenuItem menuItem25 = new MenuItem("Buscar Empleado");
 	MenuItem menuItem26 = new MenuItem("Editar Empleado");
 	MenuItem menuItem27 = new MenuItem("Eliminar Empleado");
 	MenuItem menuItem28 = new MenuItem("Dar Informacion");
-	MenuItem menuItem29 = new MenuItem("Mostrar Listado de Empleados");
-	MenuItem menuItem30 = new MenuItem("Informacion Hotel");
+	MenuItem menuItem29 = new MenuItem("Mostrar Listado de Empleados");		//listo
+	MenuItem menuItem30 = new MenuItem("Informacion Hotel");					//listo
 
 	MenuItem acerca;
 	MenuItem salir;
@@ -190,8 +194,10 @@ public class iuMainInterfaz {
 				} else if (control.equals(hpoo)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-
-					panel2.add(new Label("inicio"), 0, 0);
+					Label h=new Label("Hotel POOderoso");
+					h.setFont(new Font("Arial", 50));
+					panel2.add(h, 0, 0);
+					
 				} else if (control.equals(menuItem1)) {
 					boolean lista[] = { false, true, true, true, true, true, true, true };
 					List<String> lista2 = new ArrayList<>();
@@ -222,13 +228,11 @@ public class iuMainInterfaz {
 				} else if (control.equals(menuItem4)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-
 					panel2.add(new Label("iio"), 0, 0);
+					
 				} else if (control.equals(menuItem5)) {
-					panel2.getChildren().clear();
-					panel2.setAlignment(Pos.CENTER);
-
-					panel2.add(new Label("i"), 0, 0);
+					panel2=Reserva.mostarReservasExistente(panel2);
+					
 				} else if (control.equals(menuItem6)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
@@ -254,7 +258,29 @@ public class iuMainInterfaz {
 					lista3.add("Descripción");
 					panel2 = new FieldPanel("Criterio", lista3, "Valor", lista2, lista).crearFormulario(panel2,
 							"Crear Habitación", "Creando nueva habitación", "Habitacion");
-				} else if (control.equals(menuItem24)) {
+				}else if (control.equals(menuItem13)) {
+					panel2=Habitacion.mostrarHabitacionesExistente(panel2);
+					
+				}
+				else if (control.equals(menuItem17)) {
+					panel2=Pago.caja(panel2);
+					
+				}
+				else if (control.equals(menuItem19)) {
+					boolean lista[] = { true, true, true, true, true, true, true, true };
+					List<String> lista2 = new ArrayList<>();
+					lista2.add(null);
+					lista2.add(null);
+					List<String> lista3 = new ArrayList<>();
+					lista3.add("Cedula");
+					lista3.add("Nombre");
+					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
+					panel2 = f.crearFormulario(panel2, "Crear Cliente", "Se crea un cliente", "Cliente");
+
+				}else if (control.equals(menuItem23)) {					
+					panel2 = Cliente.mostrarClientesExistente(panel2);
+				}
+				else if (control.equals(menuItem24)) {
 					boolean lista[] = { true, true, true, true, true, true, true, true };
 					List<String> lista2 = new ArrayList<>();
 					lista2.add(null);
@@ -266,8 +292,21 @@ public class iuMainInterfaz {
 					lista3.add("Salario");
 					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
 					panel2 = f.crearFormulario(panel2, "Crear Empleado", "Se crea un empleado", "Empleado");
+										
+				}else if (control.equals(menuItem25)) {
+					panel2.getChildren().clear();
+					panel2.setAlignment(Pos.CENTER);
 
+					panel2.add(new Label("inici"), 0, 0);
 				}
+				else if (control.equals(menuItem29)) {					
+					panel2 = Empleado.mostrarEmpleadosExistente(panel2);
+				}
+				else if (control.equals(menuItem30)) {					
+					panel2 = Empleado.informacionHotel(panel2);
+				}
+				
+				
 
 			}
 		}
