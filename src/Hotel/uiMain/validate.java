@@ -1,5 +1,6 @@
 package uiMain;
 
+import java.util.Date;
 import java.util.List;
 import gestorAplicacion.Hotel.*;
 import gestorAplicacion.Terceros.*;
@@ -10,27 +11,43 @@ public class validate {
 	validate() {
 	}
 
-	public static boolean Guardar(List<String> data, String clase) {
+	public static boolean Guardar(List<String> data, String clase) throws Exception {
 		boolean isCorrect = false;
-		try {
-			switch (clase) {
-			case "Reserva":
-//				new Reserva(data.get(1), data.get(1));
-				break;
-			case "Habitacion":
-				new Habitacion(data.get(0), data.get(1));
-				break;
-			case "Empleado":
-				new Empleado(Integer.parseInt(data.get(0)), data.get(1), Float.parseFloat(data.get(2)));
-				break;
+		switch (clase) {
+		case "Reserva":
+			if (Cliente.clienteExist(Integer.parseInt(data.get(2)))) {
+				Cliente cli = Cliente.ClientePorCedula(Integer.parseInt(data.get(2)));
+				if (!cli.isPazYSalvo()) {
+					throw new Exception("El Cliente tiene un pago pendiente");
+				}
+				Habitacion hab = Habitacion.getHabitacionPorNum(data.get(5));
+				Date fechaI;
+				Date fechaF;
+				fechaI = globalServices.StringToDate(data.get(3));
+				fechaF = globalServices.StringToDate(data.get(4));
+				Reserva r = new Reserva(cli, hab, fechaI, fechaF);
 
-			default:
-				break;
+				boolean alta = true;
+				if (data.get(0).equals("Baja")) {
+					alta = false;
+				}
+				Pago.crearPago(r, alta);
+				cli.setReserva(r);
+			} else {
+				throw new Exception("El Cliente no esta registrado");
 			}
-			globalServices.GuardarSesion();
-		} catch (Exception e) {
-			isCorrect = false;
+			break;
+		case "Habitacion":
+			new Habitacion(data.get(0), data.get(1));
+			break;
+		case "Empleado":
+			new Empleado(Integer.parseInt(data.get(0)), data.get(1), Float.parseFloat(data.get(2)));
+			break;
+
+		default:
+			break;
 		}
+		globalServices.GuardarSesion();
 		return isCorrect;
 	}
 }

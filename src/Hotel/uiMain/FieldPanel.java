@@ -1,8 +1,10 @@
 package uiMain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import gestorAplicacion.Hotel.Habitacion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -26,8 +28,12 @@ public class FieldPanel extends Pane {
 	private List<TextField> lstTextField = new ArrayList<>();
 	private List<ComboBox> lstCombo = new ArrayList<>();
 	private static String tipoClase;
+	private static int pos1 = 0;
+	private static GridPane panes;
+	private static List<String> data = new ArrayList<>();
 	Button success = new Button("Aceptar");
 	Button cancel = new Button("Cancelar");
+	Button confirm = new Button("Confirmar");
 	Alert a = new Alert(AlertType.NONE);
 
 	private Label a1 = new Label();
@@ -46,6 +52,7 @@ public class FieldPanel extends Pane {
 
 	public GridPane crearFormulario(GridPane panel, String text1, String text2, String tipo) {
 		tipoClase = tipo;
+		panes = panel;
 		panel.getChildren().clear();
 		panel.setAlignment(Pos.TOP_LEFT);
 		panel.setHgap(5);
@@ -108,6 +115,7 @@ public class FieldPanel extends Pane {
 		}
 		panel.add(cancel, 0, i + 5);
 		panel.add(success, 15, i + 5);
+		pos1 = i + 10;
 
 		return panel;
 
@@ -116,8 +124,9 @@ public class FieldPanel extends Pane {
 	class Botones1 implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
+			global globalServices = new global();
 			boolean isCorrect = false;
-			List<String> data = new ArrayList<>();
+
 			Object control = e.getSource();
 			if (control instanceof Button) {
 				if (control.equals(success)) {
@@ -139,23 +148,74 @@ public class FieldPanel extends Pane {
 						}
 					}
 					if (isCorrect) {
-
-						if (validate.Guardar(data, tipoClase)) {
-							a.setAlertType(AlertType.CONFIRMATION);
-							a.setTitle("Success");
-							a.setHeaderText("Guardado exitosamente");
-							a.show();
-						} else {
+						try {
+							if (tipoClase.equals("Reserva")) {
+								Date fechaI;
+								Date fechaF;
+								fechaI = globalServices.StringToDate(data.get(3));
+								fechaF = globalServices.StringToDate(data.get(4));
+								if (fechaI.compareTo(fechaF) > 0) {
+									throw new Exception("El tiempo de la Reserva es invalido");
+								}
+								final ComboBox<String> habs = new ComboBox<>();
+								List<String> habitaciones = new ArrayList<>();
+								for (Habitacion h : Habitacion.getLstHabitacion()) {
+									if (Habitacion.isAvailable(h, fechaI, fechaF)) {
+										habitaciones.add(h.getNumeroHabitacion() + "-" + h.getTipo());
+									}
+								}
+								if (habitaciones.size() == 0) {
+									throw new Exception("No hay habitaciones disponibles");
+								}
+								Label a1 = new Label("Habitacion");
+								a1.setFont(new Font("Arial", 15));
+								panes.add(a1, 0, pos1);
+								habs.getItems().addAll(habitaciones);
+								lstCombo.add(habs);
+								habs.setValue(habitaciones.get(0));
+								panes.add(habs, 15, pos1);
+								lstCombo.add(habs);
+								panes.add(confirm, 0, pos1 + 5);
+								Botones1 pepe = new Botones1();
+								confirm.setOnAction(pepe);
+							} else {
+								if (validate.Guardar(data, tipoClase)) {
+									a.setAlertType(AlertType.CONFIRMATION);
+									a.setTitle("Success");
+									a.setHeaderText("Guardado exitosamente");
+									a.show();
+								} else {
+									a.setAlertType(AlertType.ERROR);
+									a.setTitle("Error");
+									a.setHeaderText("Error al intentar guardar");
+									a.setContentText("Uno o varios campos son invalidos");
+									a.show();
+								}
+							}
+						} catch (Exception e2) {
 							a.setAlertType(AlertType.ERROR);
 							a.setTitle("Error");
-							a.setHeaderText("Error al intentar guardar");
-							a.setContentText("Uno o varios campos son invalidos");
+							a.setContentText(e2.getMessage());
 							a.show();
 						}
 
 					}
 				} else if (control.equals(cancel)) {
 
+				} else if (control.equals(confirm)) {
+					try {
+						String numHab = ((String) lstCombo.get(lstCombo.size() - 1).getValue()).split("-")[0];
+						data.add(numHab);
+						validate.Guardar(data, "Reserva");
+						a.setAlertType(AlertType.INFORMATION);
+						a.setHeaderText("Reserva creada exitosamente");
+						a.show();
+					} catch (Exception e2) {
+						a.setAlertType(AlertType.ERROR);
+						a.setTitle("Error");
+						a.setContentText(e2.getMessage());
+						a.show();
+					}
 				}
 			}
 		}

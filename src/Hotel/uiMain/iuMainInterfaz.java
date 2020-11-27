@@ -197,14 +197,12 @@ public class iuMainInterfaz {
 					List<String> lista2 = new ArrayList<>();
 					lista2.add(String.valueOf(Reserva.getNumReserva() + 1));
 					lista2.add(null);
-					lista2.add("tipoHabitacion");
 					lista2.add("fecha");
 					lista2.add("fecha");
 					lista2.add("temporada");
 					List<String> lista3 = new ArrayList<>();
 					lista3.add("Numero de Reserva");
 					lista3.add("Cedula Del Cliente");
-					lista3.add("Tipo de Habitacion");
 					lista3.add("Fecha Inicio");
 					lista3.add("Fecha Fin");
 					lista3.add("Temporada");

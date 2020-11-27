@@ -518,7 +518,12 @@ public class Habitacion implements Serializable {
 			System.out.println("Fechas");
 			System.out.println("   Desde:");
 			while (!DateisCorrect) {
-				fecha1 = globalServices.StringToDate(sc.next());
+				try {
+					fecha1 = globalServices.StringToDate(sc.next());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				if (fecha1 != null) {
 					DateisCorrect = true;
 				} else {
@@ -529,7 +534,12 @@ public class Habitacion implements Serializable {
 			DateisCorrect = false;
 			System.out.println("   Hasta:");
 			while (!DateisCorrect) {
-				fecha2 = globalServices.StringToDate(sc.next());
+				try {
+					fecha2 = globalServices.StringToDate(sc.next());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				if (fecha2 != null) {
 					DateisCorrect = true;
 				} else {
@@ -757,6 +767,20 @@ public class Habitacion implements Serializable {
 
 	public static void setLstHabitacion(List<Habitacion> lstHabitacion) {
 		Habitacion.lstHabitacion = lstHabitacion;
+	}
+
+	public static Habitacion getHabitacionPorNum(String string) {
+		Habitacion re = null;
+		if (Habitacion.lstHabitacion.size() > 0) {
+			for (Habitacion r : Habitacion.lstHabitacion) {
+				if (r.getNumeroHabitacion() == Integer.parseInt(string)) {
+					re = r;
+				}
+			}
+			return re;
+		} else {
+			return re;
+		}
 	}
 
 }

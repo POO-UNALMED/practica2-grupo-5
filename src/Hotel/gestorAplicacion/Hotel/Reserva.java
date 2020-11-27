@@ -179,7 +179,12 @@ public class Reserva implements Serializable {
 			System.out.println("Ingrese fecha final");
 			boolean DateisCorrect = false;
 			while (!DateisCorrect) {
-				fechaF = globalServices.StringToDate(sc.next());
+				try {
+					fechaF = globalServices.StringToDate(sc.next());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				if (fechaF != null) {
 					DateisCorrect = true;
 				} else {
@@ -338,7 +343,12 @@ public class Reserva implements Serializable {
 					System.out.println("Fechas");
 					System.out.println("   Desde:");
 					while (!DateisCorrect) {
-						fecha1 = globalServices.StringToDate(sc.next());
+						try {
+							fecha1 = globalServices.StringToDate(sc.next());
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						if (fecha1 != null) {
 							DateisCorrect = true;
 						} else {
@@ -349,7 +359,12 @@ public class Reserva implements Serializable {
 					DateisCorrect = false;
 					System.out.println("   Hasta:");
 					while (!DateisCorrect) {
-						fecha2 = globalServices.StringToDate(sc.next());
+						try {
+							fecha2 = globalServices.StringToDate(sc.next());
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						if (fecha2 != null) {
 							DateisCorrect = true;
 						} else {

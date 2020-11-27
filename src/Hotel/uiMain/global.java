@@ -75,7 +75,7 @@ public class global {
 		return aux;
 	}
 
-	public Date StringToDate(String string) {
+	public Date StringToDate(String string) throws Exception {
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		Date hoy = new Date();
 		Calendar fechaHoy = Calendar.getInstance();
@@ -87,17 +87,20 @@ public class global {
 			fecha1.setTime(fecha);
 		} catch (ParseException e) {
 		}
-		if (hoy.compareTo(fecha) <= 0) {
-			return fecha;
-		} else {
-			if (fechaHoy.get(Calendar.DATE) == fecha1.get(Calendar.DATE)
-					&& (fechaHoy.get(Calendar.MONTH) + 1) == (fecha1.get(Calendar.MONTH) + 1)
-					&& fechaHoy.get(Calendar.YEAR) == fecha1.get(Calendar.YEAR)) {
+		try {
+			if (hoy.compareTo(fecha) <= 0) {
 				return fecha;
 			} else {
-				System.out.println("No se puede reservar fechas pasadas");
-				return null;
+				if (fechaHoy.get(Calendar.DATE) == fecha1.get(Calendar.DATE)
+						&& (fechaHoy.get(Calendar.MONTH) + 1) == (fecha1.get(Calendar.MONTH) + 1)
+						&& fechaHoy.get(Calendar.YEAR) == fecha1.get(Calendar.YEAR)) {
+					return fecha;
+				} else {
+					throw new Exception("No se puede reservar fechas pasadas");
+				}
 			}
+		} catch (Exception e) {
+			throw new Exception("Error: " + e.getMessage());
 		}
 
 	}
