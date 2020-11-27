@@ -23,7 +23,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class Prueba extends Application {
+public class MainInterfaz extends Application {
 	Button ent = new Button("Entrar");
 	Label caja = new Label();
 	GridPane p6 = new GridPane();

@@ -18,6 +18,7 @@ import gestorAplicacion.Hotel.Pago;
 import gestorAplicacion.Hotel.Reserva;
 import gestorAplicacion.Terceros.Cliente;
 import gestorAplicacion.Terceros.Empleado;
+import javafx.scene.layout.GridPane;
 
 public class global {
 
@@ -28,6 +29,10 @@ public class global {
 		}
 		System.out.println("\n\n           HOTEL EL POODEROSO");
 		System.out.println("------------------ // ------------------\n\n\n");
+	}
+
+	public void clearInterfaz(GridPane pan) {
+		pan.getChildren().clear();
 	}
 
 	@SuppressWarnings("resource")
