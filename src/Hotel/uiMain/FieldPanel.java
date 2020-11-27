@@ -1,6 +1,5 @@
 /*La clase FieldPane se encarga de ejecutar las vistas de la interfaz grafica, todo lo relacionado a botones y ventanas emergentes que le ayudan a interactuar al usuario*/
 
-
 package uiMain;
 
 import java.util.ArrayList;
@@ -49,7 +48,7 @@ public class FieldPanel extends Pane {
 	private Label a2 = new Label();
 
 	public FieldPanel(String criterio, List<String> lstCriterio, String valor, List<String> lstValor,
-			boolean[] lstNoedit) {//Constructor del segundo menu
+			boolean[] lstNoedit) {// Constructor del segundo menu
 		super();
 		this.criterio.setText(criterio);
 		this.lstCriterio = lstCriterio;
@@ -59,7 +58,9 @@ public class FieldPanel extends Pane {
 
 	}
 
-	public GridPane crearFormulario(GridPane panel, String Text1, String Text2, String tipo) {//Constructor del formulario para Procesos y Consultas
+	public GridPane crearFormulario(GridPane panel, String Text1, String Text2, String tipo) {// Constructor del
+																								// formulario para
+																								// Procesos y Consultas
 		tipoClase = tipo;
 		panes = panel;
 		text1 = Text1;
@@ -134,7 +135,7 @@ public class FieldPanel extends Pane {
 
 	}
 
-	class Botones1 implements EventHandler<ActionEvent> { //Eventos al precionar los botones Aceptar/Cancelar
+	class Botones1 implements EventHandler<ActionEvent> { // Eventos al precionar los botones Aceptar/Cancelar
 		@Override
 		public void handle(ActionEvent e) {
 			global globalServices = new global();

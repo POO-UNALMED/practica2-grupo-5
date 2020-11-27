@@ -178,7 +178,9 @@ public class iuMainInterfaz {
 
 	}
 
-	class UnicoHandlerClass implements EventHandler<ActionEvent> { //Clase encargada de cargar los formularios de los usuarios dependiendo de la cantidad de datos que deban ingresar
+	class UnicoHandlerClass implements EventHandler<ActionEvent> { // Clase encargada de cargar los formularios de los
+																	// usuarios dependiendo de la cantidad de datos que
+																	// deban ingresar
 		@Override
 		public void handle(ActionEvent e) {
 			Object control = e.getSource();

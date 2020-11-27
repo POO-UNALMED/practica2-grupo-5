@@ -56,7 +56,9 @@ public class MainInterfaz extends Application {
 	public ImageView i21;
 
 	@Override
-	public void start(Stage hotel) throws Exception { // Metodo que carga la primer interfaz con la que interactua el usuario, Muestra las fotos y la informacion de los empleados del hotel y sus fotos.
+	public void start(Stage hotel) throws Exception { // Metodo que carga la primer interfaz con la que interactua el
+														// usuario, Muestra las fotos y la informacion de los empleados
+														// del hotel y sus fotos.
 		global globalServices = new global();
 		globalServices.CargarSesion();
 
@@ -231,7 +233,8 @@ public class MainInterfaz extends Application {
 		launch(args);
 	}
 
-	EventHandler<MouseEvent> mouseHandler1 = new EventHandler<MouseEvent>() {//Cambio del texto de informacion de los empleado al hacer click sobre la zona
+	EventHandler<MouseEvent> mouseHandler1 = new EventHandler<MouseEvent>() {// Cambio del texto de informacion de los
+																				// empleado al hacer click sobre la zona
 		@Override
 		public void handle(MouseEvent mouseEvent) {
 			cont1++;
