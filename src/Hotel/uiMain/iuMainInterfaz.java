@@ -1,6 +1,5 @@
 package uiMain;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -10,9 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -43,8 +39,8 @@ public class iuMainInterfaz {
 		Menu menu1 = new Menu("Archivo");
 		Menu menu2 = new Menu("Procesos y Consultas");
 		acerca = new MenuItem("Acerca de");
-		salir= new MenuItem("Salir");
-		hpoo=new MenuItem("Hotel POOderoso");
+		salir = new MenuItem("Salir");
+		hpoo = new MenuItem("Hotel POOderoso");
 		menu2.getItems().addAll(menuItem1);
 		menu2.getItems().addAll(menuItem2);
 		menu2.getItems().addAll(menuItem3);
@@ -100,56 +96,47 @@ public class iuMainInterfaz {
 							+ "Nombre: Andres Castrillon Velasquez\n   -Correo: acastrillonv@unal.edu.co");
 					cajapanel2.setFont(new Font("Arial", 30));
 					panel2.add(cajapanel2, 0, 0);
-				}
-				else if (control.equals(hpoo)) {
+				} else if (control.equals(hpoo)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-					
+
 					panel2.add(new Label("inicio"), 0, 0);
-				}
-				else if (control.equals(menuItem1)) {
+				} else if (control.equals(menuItem1)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-					
+
 					panel2.add(new Label("io"), 0, 0);
-				}
-				else if (control.equals(menuItem2)) {
+				} else if (control.equals(menuItem2)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-					
+
 					panel2.add(new Label("ini"), 0, 0);
-				}
-				else if (control.equals(menuItem3)) {
+				} else if (control.equals(menuItem3)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-					
+
 					panel2.add(new Label("io"), 0, 0);
-				}
-				else if (control.equals(menuItem4)) {
+				} else if (control.equals(menuItem4)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-					
+
 					panel2.add(new Label("iio"), 0, 0);
-				}
-				else if (control.equals(menuItem5)) {
+				} else if (control.equals(menuItem5)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-					
+
 					panel2.add(new Label("i"), 0, 0);
-				}
-				else if (control.equals(menuItem6)) {
+				} else if (control.equals(menuItem6)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-					
+
 					panel2.add(new Label("ini"), 0, 0);
-				}
-				else if (control.equals(menuItem7)) {
+				} else if (control.equals(menuItem7)) {
 					panel2.getChildren().clear();
 					panel2.setAlignment(Pos.CENTER);
-					
+
 					panel2.add(new Label("inici"), 0, 0);
 				}
-				
 
 			}
 		}
