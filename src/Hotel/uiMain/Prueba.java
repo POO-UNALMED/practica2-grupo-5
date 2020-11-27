@@ -18,8 +18,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -159,8 +159,6 @@ public class Prueba extends Application {
 		i21.setFitWidth(300);
 		i21.setFitHeight(300);
 
-
-
 		BorderPane root = new BorderPane();
 		root.setPadding(new Insets(10, 10, 10, 10));
 		BorderPane p1 = new BorderPane();
@@ -291,7 +289,7 @@ public class Prueba extends Application {
 			if (control instanceof Button) {
 				if (control.equals(ent)) {
 					new iuMainInterfaz().crearEscenaMenu();
-					
+
 				}
 			}
 		}
