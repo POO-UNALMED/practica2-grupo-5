@@ -23,6 +23,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.format.DateTimeFormat;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -451,6 +452,16 @@ public class Habitacion implements Serializable {
 		Habitacion.Guardar();
 	}
 
+	public static void eliminarHabitacion(int num) {
+		for (int i = 0; i < lstHabitacion.size(); i++) {
+			if (lstHabitacion.get(i).getNumeroHabitacion() == num) {
+				lstHabitacion.remove(i);
+				Reserva.EliminarHabitacion(lstHabitacion.get(i));
+			}
+		}
+		Habitacion.Guardar();
+	}
+
 	public static void eliminarReserva(Reserva r) {
 
 		Calendar fechaIniAux = Calendar.getInstance();
@@ -474,28 +485,26 @@ public class Habitacion implements Serializable {
 		Habitacion.Guardar();
 	}
 
-	@SuppressWarnings("resource")
 	public static GridPane mostrarHabitacionesExistente(GridPane panel) {
 		DecimalFormat moneda = new DecimalFormat("###,###");
-		global globalService = new global();
-		Scanner sc = new Scanner(System.in);
-		globalService.clearScr();
-		String t="";
-		t+="HABITACIONES EXISTENTES ACTUALMENTE\n";
+		panel.getChildren().clear();
+		panel.setAlignment(Pos.TOP_LEFT);
+		String t = "";
+		t += "HABITACIONES EXISTENTES ACTUALMENTE\n";
 		if (Habitacion.lstHabitacion.size() > 0) {
 			int n = 1;
 			for (Habitacion h : Habitacion.lstHabitacion) {
-				t+=n + "- Numero de habitacion: " + h.getNumeroHabitacion() + " Descripcion: "
-						+ h.getDescripcion() + "\n   Tipo: " + h.getTipo() + "  Precio por dia : $ "
-						+ moneda.format(h.getPrecioDia())+"\n";
+				t += n + "- Numero de habitacion: " + h.getNumeroHabitacion() + " Descripcion: " + h.getDescripcion()
+						+ "\n   Tipo: " + h.getTipo() + "  Precio por dia : $ " + moneda.format(h.getPrecioDia())
+						+ "\n";
 				n++;
 			}
-			t+="Total de habitaciones: " + Habitacion.lstHabitacion.size()+"\n";
+			t += "Total de habitaciones: " + Habitacion.lstHabitacion.size() + "\n";
 		} else {
-			t+="No hay habitaciones existentes por el momento.";
+			t += "No hay habitaciones existentes por el momento.";
 		}
-		Label tete=new Label(t);
-		tete.setFont(new Font("Arial", 20));
+		Label tete = new Label(t);
+		tete.setFont(new Font("Arial", 15));
 		panel.add(tete, 0, 0);
 		return panel;
 	}
@@ -518,8 +527,6 @@ public class Habitacion implements Serializable {
 				try {
 					fecha1 = globalServices.StringToDate(sc.next());
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
 				if (fecha1 != null) {
 					DateisCorrect = true;
@@ -534,8 +541,6 @@ public class Habitacion implements Serializable {
 				try {
 					fecha2 = globalServices.StringToDate(sc.next());
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
 				if (fecha2 != null) {
 					DateisCorrect = true;

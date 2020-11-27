@@ -25,12 +25,12 @@ import javafx.scene.layout.GridPane;
 public class global {
 
 	public void clearScr() {
-		try {
-			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-		} catch (Exception e) {
-		}
-		System.out.println("\n\n           HOTEL EL POODEROSO");
-		System.out.println("------------------ // ------------------\n\n\n");
+//		try {
+//			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+//		} catch (Exception e) {
+//		}
+//		System.out.println("\n\n           HOTEL EL POODEROSO");
+//		System.out.println("------------------ // ------------------\n\n\n");
 	}
 
 	public void clearInterfaz(GridPane pan) {
