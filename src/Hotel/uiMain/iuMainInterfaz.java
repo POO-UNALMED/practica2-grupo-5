@@ -3,6 +3,7 @@ package uiMain;
 import java.util.ArrayList;
 import java.util.List;
 
+import gestorAplicacion.Hotel.Reserva;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -192,15 +193,23 @@ public class iuMainInterfaz {
 
 					panel2.add(new Label("inicio"), 0, 0);
 				} else if (control.equals(menuItem1)) {
-					boolean lista[] = { false, false, false, false, false, false, false, false };
+					boolean lista[] = { false, true, true, true, true, true, true, true };
 					List<String> lista2 = new ArrayList<>();
-					lista2.add("Edwar");
-					lista2.add("123");
+					lista2.add(String.valueOf(Reserva.getNumReserva() + 1));
+					lista2.add(null);
+					lista2.add("tipoHabitacion");
+					lista2.add("fecha");
+					lista2.add("fecha");
+					lista2.add("temporada");
 					List<String> lista3 = new ArrayList<>();
-					lista3.add("Nombre");
-					lista3.add("Cedula");
-					panel2 = new FieldPanel("Criterio", lista3, "Valor", lista2, lista).crearFormulario(panel2,
-							"Crear Reserva", "Se crea reserva");
+					lista3.add("Numero de Reserva");
+					lista3.add("Cedula Del Cliente");
+					lista3.add("Tipo de Habitacion");
+					lista3.add("Fecha Inicio");
+					lista3.add("Fecha Fin");
+					lista3.add("Temporada");
+					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
+					panel2 = f.crearFormulario(panel2, "Crear Reserva", "Se crea reserva", "Reserva");
 
 				} else if (control.equals(menuItem2)) {
 					panel2.getChildren().clear();
@@ -232,6 +241,34 @@ public class iuMainInterfaz {
 					panel2.setAlignment(Pos.CENTER);
 
 					panel2.add(new Label("inici"), 0, 0);
+				} else if (control.equals(menuItem8)) {
+					panel2.getChildren().clear();
+					panel2.setAlignment(Pos.CENTER);
+
+					panel2.add(new Label("inici"), 0, 0);
+				} else if (control.equals(menuItem9)) {
+					boolean lista[] = { false, true, false, false, false, false, false, false };
+					List<String> lista2 = new ArrayList<>();
+					lista2.add("tipoHabitacion");
+					lista2.add("");
+					List<String> lista3 = new ArrayList<>();
+					lista3.add("Tipo");
+					lista3.add("Descripción");
+					panel2 = new FieldPanel("Criterio", lista3, "Valor", lista2, lista).crearFormulario(panel2,
+							"Crear Habitación", "Creando nueva habitación", "Habitacion");
+				} else if (control.equals(menuItem24)) {
+					boolean lista[] = { true, true, true, true, true, true, true, true };
+					List<String> lista2 = new ArrayList<>();
+					lista2.add(null);
+					lista2.add(null);
+					lista2.add(null);
+					List<String> lista3 = new ArrayList<>();
+					lista3.add("Nombre");
+					lista3.add("Cedula");
+					lista3.add("Salario");
+					FieldPanel f = new FieldPanel("Criterio", lista3, "Valor", lista2, lista);
+					panel2 = f.crearFormulario(panel2, "Crear Empleado", "Se crea un empleado", "Empleado");
+
 				}
 
 			}

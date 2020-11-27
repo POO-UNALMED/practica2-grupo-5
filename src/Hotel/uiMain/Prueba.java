@@ -56,6 +56,8 @@ public class Prueba extends Application {
 
 	@Override
 	public void start(Stage hotel) throws Exception {
+		global globalServices = new global();
+		globalServices.CargarSesion();
 
 		Image im1 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im1.jpg"));
 		Image im2 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\im2.jpeg"));
